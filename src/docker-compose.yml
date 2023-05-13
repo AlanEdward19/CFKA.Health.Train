@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+  cfka.health:
+    depends_on: 
+          - "postgres"
+
+    image: ${DOCKER_REGISTRY-}cfkahealth
+
+    build:
+      context: .
+      dockerfile: CFKA.Health.Train.API/Dockerfile
+
+    ports:
+        - "5000:5000" 
+
+    environment:
+        ASPNETCORE_URLS: "http://+:5000"
+
+  postgres:
+    container_name: 'CKFA.Health.Database'
+    command: postgres -c 'max_connections=500'
+    image: postgres:latest
+    restart: always
+
+    environment:
+        - POSTGRES_USER=cfka_root
+        - POSTGRES_PASSWORD=Aedso123
+        - POSTGRES_DB=cfkadb
+
+    volumes:
+        - ../volumes/postgres_data:/var/lib/postgresql/data
+
+    ports:
+        - "5431:5432"
+
+    networks:
+        - cfka-network
+
+networks:
+  cfka-network:
+    driver: bridge

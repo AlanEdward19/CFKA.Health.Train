@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\CreateUpdateMuscle\" />
+    <Folder Include="Commands\CreateUpdateExercise\" />
+    <Folder Include="Annotations\" />
+    <Folder Include="Queries\GetMuscle\" />
+    <Folder Include="Queries\GetExercise\" />
+    <Folder Include="Utils\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CFKA.Health.Train.Domain\CFKA.Health.Train.Domain.csproj" />
+    <ProjectReference Include="..\CFKA.Health.Train.Infrasctructure\CFKA.Health.Train.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

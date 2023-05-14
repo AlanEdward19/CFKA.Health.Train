@@ -3,9 +3,9 @@
 public record Workout
 {
     public string Name;
-    public IEnumerable<Exercise> Exercises { get; set; }
+    public IEnumerable<TrainingExercise> Exercises { get; set; }
 
-    public Workout(IEnumerable<Exercise> exercises)
+    public Workout(IEnumerable<TrainingExercise> exercises)
     {
         Exercises = exercises;
 
@@ -14,9 +14,9 @@ public record Workout
 
     public void SetTrainingName()
     {
-        var muscles = string.Join(",", Exercises.Select(exercise => exercise.Muscle.MainMuscle.ToString()).ToList());
+        var muscles = string.Join(",", Exercises.Select(exercise => exercise.Exercise.Muscle.MainMuscle.ToString()).ToList());
         var lastComma = muscles.LastIndexOf(",");
 
-        Name = $"{muscles.Substring(0, lastComma)} e {muscles.Substring(lastComma + 1)}";
+        Name = $"{muscles.Substring(0, lastComma)} and {muscles.Substring(lastComma + 1)}";
     }
 }

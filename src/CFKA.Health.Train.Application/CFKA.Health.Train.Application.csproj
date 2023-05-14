@@ -13,6 +13,8 @@
     <Folder Include="Handler\" />
     <Folder Include="Queries\GetMuscle\" />
     <Folder Include="Queries\GetExercise\" />
+    <Folder Include="Queries\BuildTrainingSheet\" />
+    <Folder Include="Queries\BuildWorkouts\" />
     <Folder Include="Utils\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Validators\" />

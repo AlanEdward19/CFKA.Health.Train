@@ -1,10 +1,7 @@
-﻿using CFKA.Health.Application.Commands.CreateUpdateExercise;
-using CFKA.Health.Application.Commands.CreateUpdateMuscle;
-using CFKA.Health.Application.Queries.GetExercise;
-using CFKA.Health.Application.Queries.GetMuscle;
-using CFKA.Health.Domain.Interfaces;
+﻿using CFKA.Health.Domain.Interfaces;
 using CFKA.Health.Infrastructure.Context;
 using CFKA.Health.Infrastructure.Repository;
+using CFKA.Health.Train.Application.Handler;
 using Microsoft.EntityFrameworkCore;
 
 namespace CFKA.Health.Configurations;
@@ -36,6 +33,8 @@ public static class Services
         services.AddScoped<IRepository<Exercise>, Repository<Exercise>>();
 
         #endregion
+
+        services.AddScoped<TrainingHandler>();
 
         return services;
     }

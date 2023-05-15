@@ -11,26 +11,294 @@ namespace CFKA.Health.Infrastructure.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            #region Chest
+
+            Muscle upperChest = new()
+            {
+                Name = "Upper Chest",
+                MainMuscle = EMuscle.Chest
+            };
+
+            Muscle middleChest = new()
+            {
+                Name = "Middle Chest",
+                MainMuscle = EMuscle.Chest
+            };
+
+            Muscle lowerChest = new()
+            {
+                Name = "Lower Chest",
+                MainMuscle = EMuscle.Chest
+            };
+
+            #endregion
+
+            #region Back
+
+            Muscle trapezius = new()
+            {
+                Name = "Trapezius",
+                MainMuscle = EMuscle.Back
+            };
+
+            Muscle lats = new()
+            {
+                Name = "Lats",
+                MainMuscle = EMuscle.Back
+            };
+
+            Muscle lowBack = new()
+            {
+                Name = "Low Back",
+                MainMuscle = EMuscle.Back
+            };
+
+            #endregion
+
+            #region Biceps
+
+            Muscle brachialis = new()
+            {
+                Name = "Brachialis",
+                MainMuscle = EMuscle.Biceps
+            };
+
+            Muscle brachioradialis = new()
+            {
+                Name = "Brachioradialis",
+                MainMuscle = EMuscle.Biceps
+            };
+
+            Muscle bicepsBrachii = new()
+            {
+                Name = "Biceps Brachii",
+                MainMuscle = EMuscle.Biceps
+            };
+
+            #endregion
+
+            #region Triceps
+
+            Muscle longHeadOfTriceps = new()
+            {
+                Name = "Long Head of Triceps",
+                MainMuscle = EMuscle.Triceps
+            };
+
+            Muscle medialHeadOfTriceps = new()
+            {
+                Name = "Medial Head of Triceps",
+                MainMuscle = EMuscle.Triceps
+            };
+
+            Muscle lateralHeadOfTriceps = new()
+            {
+                Name = "Lateral Head of Triceps",
+                MainMuscle = EMuscle.Triceps
+            };
+
+            #endregion
+
+            #region Abs
+
+            Muscle upperAbs = new()
+            {
+                Name = "Upper Abs",
+                MainMuscle = EMuscle.Abs
+            };
+
+            Muscle lowerAbs = new()
+            {
+                Name = "Lower Abs",
+                MainMuscle = EMuscle.Abs
+            };
+
+            Muscle obliques = new()
+            {
+                Name = "Obliques",
+                MainMuscle = EMuscle.Abs
+            };
+
+            #endregion
+
+            #region Calves
+
+            Muscle upperCalf = new()
+            {
+                Name = "Gastrocnemius (Upper Calf)",
+                MainMuscle = EMuscle.Calves
+            };
+
+            Muscle lowerCalf = new()
+            {
+                Name = "Soleus (Lower Calf)",
+                MainMuscle = EMuscle.Calves
+            };
+
+            Muscle tibialisAnterior = new()
+            {
+                Name = "Tibialis Anterior",
+                MainMuscle = EMuscle.Calves
+            };
+
+            #endregion
+
+            #region Quadriceps
+
+            Muscle vastusLateralis = new()
+            {
+                Name = "Vastus Lateralis",
+                MainMuscle = EMuscle.Quadriceps
+            };
+
+
+            Muscle vastusMedialis = new()
+            {
+                Name = "Vastus Medialis",
+                MainMuscle = EMuscle.Quadriceps
+            };
+
+            Muscle rectusFemoris = new()
+            {
+                Name = "Rectus Femoris",
+                MainMuscle = EMuscle.Quadriceps
+            };
+
+            #endregion
+
+            #region Glutes
+
+            Muscle gluteusMaximus = new()
+            {
+                Name = "Gluteus Maximus",
+                MainMuscle = EMuscle.Glutes
+            };
+
+            Muscle gluteusMedius = new()
+            {
+                Name = "Gluteus Medius",
+                MainMuscle = EMuscle.Glutes
+            };
+
+            Muscle gluteusMinimus = new()
+            {
+                Name = "Gluteus Minimus",
+                MainMuscle = EMuscle.Glutes
+            };
+
+            #endregion
+
+            #region Forearms
+
+            Muscle wristFlexors = new()
+            {
+                Name = "Wrist Flexors",
+                MainMuscle = EMuscle.Forearms
+            };
+
+            Muscle wristExtensors = new()
+            {
+                Name = "Wrist Extensors",
+                MainMuscle = EMuscle.Forearms
+            };
+
+            Muscle grip = new()
+            {
+                Name = "Grip",
+                MainMuscle = EMuscle.Forearms
+            };
+
+            #endregion
+
             modelBuilder.Entity<Muscle>().HasData(new List<Muscle>()
             {
                 #region Muscles
+
+                upperChest, middleChest, lowerChest,
+
+                trapezius, lats, lowBack,
+
+                brachialis, brachioradialis, bicepsBrachii,
+
+                longHeadOfTriceps, medialHeadOfTriceps, lateralHeadOfTriceps,
+
+                upperAbs, lowerAbs, obliques,
+
+                upperCalf, lowerCalf, tibialisAnterior,
+
+                vastusLateralis, vastusMedialis, rectusFemoris,
+
+                gluteusMaximus, gluteusMedius, gluteusMinimus,
+
+                wristFlexors, wristExtensors, grip
+
+                #endregion
+            });
+
+            modelBuilder.Entity<Exercise>().HasData(new List<Exercise>()
+            {
+                #region Exercises
 
                 #region Chest
 
                 new()
                 {
-                    Name = "Upper Chest",
-                    MainMuscle = EMuscle.Chest
+                    Name = "Incline Bench Press",
+                    Muscle = upperChest
                 },
                 new()
                 {
-                    Name = "Middle Chest",
-                    MainMuscle = EMuscle.Chest
+                    Name = "Incline Bench Press with Dumbbells",
+                    Muscle = upperChest
                 },
                 new()
                 {
-                    Name = "Lower Chest",
-                    MainMuscle = EMuscle.Chest
+                    Name = "Low Pulley Crossover",
+                    Muscle = upperChest
+                },
+
+
+                new()
+                {
+                    Name = "Bench Press",
+                    Muscle = middleChest
+                },
+                new()
+                {
+                    Name = "Bench Press with Dumbbells",
+                    Muscle = middleChest
+                },
+                new()
+                {
+                    Name = "Pulley Crossover",
+                    Muscle = middleChest
+                },
+                new()
+                {
+                    Name = "Machine Crossover",
+                    Muscle = middleChest
+                },
+                new()
+                {
+                    Name = "Push-Up",
+                    Muscle = middleChest
+                },
+
+
+                new()
+                {
+                    Name = "Decline Bench Press",
+                    Muscle = lowerChest
+                },
+                new()
+                {
+                    Name = "Decline Bench Press with Dumbbells",
+                    Muscle = lowerChest
+                },
+                new()
+                {
+                    Name = "High Pulley Crossover",
+                    Muscle = lowerChest
                 },
 
                 #endregion
@@ -39,18 +307,20 @@ namespace CFKA.Health.Infrastructure.Context
 
                 new()
                 {
-                    Name = "Trapezius",
-                    MainMuscle = EMuscle.Back
+                    Name = "",
+                    Muscle = trapezius
                 },
+
                 new()
                 {
-                    Name = "Lats",
-                    MainMuscle = EMuscle.Back
+                    Name = "",
+                    Muscle = lats
                 },
+
                 new()
                 {
-                    Name = "Low Back",
-                    MainMuscle = EMuscle.Back
+                    Name = "",
+                    Muscle = lowBack
                 },
 
                 #endregion
@@ -59,18 +329,20 @@ namespace CFKA.Health.Infrastructure.Context
 
                 new()
                 {
-                    Name = "Brachialis",
-                    MainMuscle = EMuscle.Biceps
+                    Name = "",
+                    Muscle = brachialis
                 },
+
                 new()
                 {
-                    Name = "Brachioradialis",
-                    MainMuscle = EMuscle.Biceps
+                    Name = "",
+                    Muscle = brachioradialis
                 },
+
                 new()
                 {
-                    Name = "Biceps Brachii",
-                    MainMuscle = EMuscle.Biceps
+                    Name = "",
+                    Muscle = bicepsBrachii
                 },
 
                 #endregion
@@ -79,18 +351,20 @@ namespace CFKA.Health.Infrastructure.Context
 
                 new()
                 {
-                    Name = "Long Head of Triceps",
-                    MainMuscle = EMuscle.Triceps
+                    Name = "",
+                    Muscle = longHeadOfTriceps
                 },
+
                 new()
                 {
-                    Name = "Medial Head of Triceps",
-                    MainMuscle = EMuscle.Triceps
+                    Name = "",
+                    Muscle = medialHeadOfTriceps
                 },
+
                 new()
                 {
-                    Name = "Lateral Head of Triceps",
-                    MainMuscle = EMuscle.Triceps
+                    Name = "",
+                    Muscle = lateralHeadOfTriceps
                 },
 
                 #endregion
@@ -99,18 +373,20 @@ namespace CFKA.Health.Infrastructure.Context
 
                 new()
                 {
-                    Name = "Upper Abs",
-                    MainMuscle = EMuscle.Abs
+                    Name = "",
+                    Muscle = upperAbs
                 },
+
                 new()
                 {
-                    Name = "Lower Abs",
-                    MainMuscle = EMuscle.Abs
+                    Name = "",
+                    Muscle = lowerAbs
                 },
+
                 new()
                 {
-                    Name = "Obliques",
-                    MainMuscle = EMuscle.Abs
+                    Name = "",
+                    Muscle = obliques
                 },
 
                 #endregion
@@ -119,18 +395,20 @@ namespace CFKA.Health.Infrastructure.Context
 
                 new()
                 {
-                    Name = "Gastrocnemius (Upper Calf)",
-                    MainMuscle = EMuscle.Calves
+                    Name = "",
+                    Muscle = upperCalf
                 },
+
                 new()
                 {
-                    Name = "Soleus (Lower Calf)",
-                    MainMuscle = EMuscle.Calves
+                    Name = "",
+                    Muscle = lowerCalf
                 },
+
                 new()
                 {
-                    Name = "Tibialis Anterior",
-                    MainMuscle = EMuscle.Calves
+                    Name = "",
+                    Muscle = tibialisAnterior
                 },
 
                 #endregion
@@ -139,18 +417,20 @@ namespace CFKA.Health.Infrastructure.Context
 
                 new()
                 {
-                    Name = "Vastus Lateralis",
-                    MainMuscle = EMuscle.Quadriceps
+                    Name = "",
+                    Muscle = vastusLateralis
                 },
+
                 new()
                 {
-                    Name = "Vastus Medialis",
-                    MainMuscle = EMuscle.Quadriceps
+                    Name = "",
+                    Muscle = vastusMedialis
                 },
+
                 new()
                 {
-                    Name = "Rectus Femoris",
-                    MainMuscle = EMuscle.Quadriceps
+                    Name = "",
+                    Muscle = rectusFemoris
                 },
 
                 #endregion
@@ -159,18 +439,20 @@ namespace CFKA.Health.Infrastructure.Context
 
                 new()
                 {
-                    Name = "Gluteus Maximus",
-                    MainMuscle = EMuscle.Glutes
+                    Name = "",
+                    Muscle = gluteusMaximus
                 },
+
                 new()
                 {
-                    Name = "Gluteus Medius",
-                    MainMuscle = EMuscle.Glutes
+                    Name = "",
+                    Muscle = gluteusMedius
                 },
+
                 new()
                 {
-                    Name = "Gluteus Minimus",
-                    MainMuscle = EMuscle.Glutes
+                    Name = "",
+                    Muscle = gluteusMinimus
                 },
 
                 #endregion
@@ -179,27 +461,23 @@ namespace CFKA.Health.Infrastructure.Context
 
                 new()
                 {
-                    Name = "Wrist Flexors",
-                    MainMuscle = EMuscle.Forearms
+                    Name = "",
+                    Muscle = wristFlexors
                 },
+
                 new()
                 {
-                    Name = "Wrist Extensors",
-                    MainMuscle = EMuscle.Forearms
+                    Name = "",
+                    Muscle = wristExtensors
                 },
+
                 new()
                 {
-                    Name = "Grip",
-                    MainMuscle = EMuscle.Forearms
-                }
+                    Name = "",
+                    Muscle = grip
+                },
 
                 #endregion
-
-                #endregion
-
-                #region Exercises
-
-                
 
                 #endregion
             });

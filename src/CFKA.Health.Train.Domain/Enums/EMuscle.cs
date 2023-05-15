@@ -8,10 +8,7 @@ public enum EMuscle
     Triceps,
     Abs,
     Calves,
-    Hamstrings,
     Quadriceps,
     Glutes,
-    Forearms,
-    Trapezius,
-    Lats
+    Forearms
 }

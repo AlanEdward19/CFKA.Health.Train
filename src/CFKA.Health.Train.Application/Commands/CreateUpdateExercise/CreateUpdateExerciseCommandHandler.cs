@@ -22,7 +22,7 @@ public class CreateUpdateExerciseCommandHandler : ICommandHandler
         Exercise exercise = new()
         {
             Name = model.Name,
-            Muscle = muscle
+            MuscleId = muscle.Id
         };
 
         await _repository.AddAsync(exercise);
@@ -36,7 +36,7 @@ public class CreateUpdateExerciseCommandHandler : ICommandHandler
         Exercise exercise = new()
         {
             Name = model.Name,
-            Muscle = muscle
+            MuscleId = muscle.Id
         };
 
         await _repository.UpdateAsync(exercise, id);

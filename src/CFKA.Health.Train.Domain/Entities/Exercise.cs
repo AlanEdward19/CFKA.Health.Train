@@ -7,5 +7,7 @@ public class Exercise
     [Key]
     public int Id { get; set; }
     public string Name { get; set; }
-    public Muscle Muscle { get; set; }
+    public int MuscleId { get; set; }
+
+    public virtual Muscle Muscle { get; set; }
 }

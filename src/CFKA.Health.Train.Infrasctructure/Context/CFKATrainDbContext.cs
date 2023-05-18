@@ -218,17 +218,17 @@ public class CFKATrainDbContext : DbContext
 
             upperChest, middleChest, lowerChest,
 
-            trapezius, lats.Id, lowBack,
+            trapezius, lats, lowBack,
 
-            brachialis, brachioradialis.Id, bicepsBrachii,
+            brachialis, brachioradialis, bicepsBrachii,
 
-            longHeadOfTriceps.Id, medialHeadOfTriceps.Id, lateralHeadOfTriceps,
+            longHeadOfTriceps, medialHeadOfTriceps, lateralHeadOfTriceps,
 
             upperAbs, lowerAbs, obliques,
 
             upperCalf, lowerCalf, tibialisAnterior,
 
-            vastusLateralis, vastusMedialis.Id, rectusFemoris,
+            vastusLateralis, vastusMedialis, rectusFemoris,
 
             gluteusMaximus, gluteusMedius, gluteusMinimus,
 
@@ -248,27 +248,27 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Name = "Incline Bench Press",
-                MuscleIdId = upperChest.Id
+                MuscleId = upperChest.Id
             },
             new()
             {
                 Name = "Incline Bench Press with Dumbbells",
-                MuscleIdId = upperChest.Id
+                MuscleId = upperChest.Id
             },
             new()
             {
                 Name = "Low Pulley Crossover",
-                MuscleIdId = upperChest.Id
+                MuscleId = upperChest.Id
             },
             new()
             {
                 Name = "Incline Dumbbell Flyes",
-                MuscleIdId = upperChest.Id
+                MuscleId = upperChest.Id
             },
             new()
             {
                 Name = "Incline Push-Ups",
-                MuscleIdId = upperChest.Id
+                MuscleId = upperChest.Id
             },
 
             #endregion
@@ -278,47 +278,47 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Name = "Bench Press",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
             new()
             {
                 Name = "Bench Press with Dumbbells",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
             new()
             {
                 Name = "Pulley Crossover",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
             new()
             {
                 Name = "Machine Crossover",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
             new()
             {
                 Name = "Push-Up",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
             new()
             {
                 Name = "Dumbbell Bench Press",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
             new()
             {
                 Name = "Chest Press Machine",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
             new()
             {
                 Name = "Dips",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
             new()
             {
                 Name = "Cable Chest Press",
-                MuscleIdId = middleChest.Id
+                MuscleId = middleChest.Id
             },
 
             #endregion
@@ -328,27 +328,27 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Name = "Decline Bench Press",
-                MuscleIdId = lowerChest.Id
+                MuscleId = lowerChest.Id
             },
             new()
             {
                 Name = "Decline Bench Press with Dumbbells",
-                MuscleIdId = lowerChest.Id
+                MuscleId = lowerChest.Id
             },
             new()
             {
                 Name = "High Pulley Crossover",
-                MuscleIdId = lowerChest.Id
+                MuscleId = lowerChest.Id
             },
             new()
             {
                 Name = "Decline Dumbbell Flyes",
-                MuscleIdId = lowerChest.Id
+                MuscleId = lowerChest.Id
             },
             new()
             {
                 Name = "Decline Push-Ups",
-                MuscleIdId = lowerChest.Id
+                MuscleId = lowerChest.Id
             },
 
             #endregion
@@ -760,7 +760,7 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Name = "Reverse grip triceps pushdown",
-                MuscleId = longHeadOfTriceps.I
+                MuscleId = longHeadOfTriceps.Id
             },
 
             #endregion

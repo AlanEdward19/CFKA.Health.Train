@@ -8,6 +8,4 @@ public class Muscle
     public int Id { get; set; }
     public EMuscle MainMuscle { get; set; }
     public string Name { get; set; }
-
-    public virtual IEnumerable<Exercise> Exercises { get; set; }
 }

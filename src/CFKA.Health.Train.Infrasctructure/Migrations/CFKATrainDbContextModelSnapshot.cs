@@ -40,7 +40,7 @@ namespace CFKA.Health.Infrastructure.Migrations
 
                     b.HasIndex("MuscleId");
 
-                    b.ToTable("Exercises");
+                    b.ToTable("Exercises", (string)null);
 
                     b.HasData(
                         new
@@ -1094,7 +1094,7 @@ namespace CFKA.Health.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Muscles");
+                    b.ToTable("Muscles", (string)null);
 
                     b.HasData(
                         new

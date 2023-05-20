@@ -1,9 +1,9 @@
-﻿using CFKA.Health.Domain.Entities;
-using CFKA.Health.Domain.ValueObjects;
-using CFKA.Health.Infrastructure.Context;
+﻿using CFKA.Health.Infrastructure.Context;
 using CFKA.Health.Train.Application.Queries.BuildTrainingSheet;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using CFKA.Health.Infrastructure.Extensions;
+using CFKA.Health.Train.Application.ViewModels;
 
 namespace CFKA.Health.Train.Application.Handler;
 
@@ -13,21 +13,23 @@ public class TrainingHandler
 
     public TrainingHandler(CFKATrainDbContext dbContext)
     {
-        _exercises = dbContext.Exercises;
+        _exercises = dbContext.Set<Exercise>();
     }
-    public async Task<TrainingSheet> BuildTrainingSheet(BuildTrainingSheetQuery query)
+    public async Task<TrainingSheetViewModel> BuildTrainingSheet(BuildTrainingSheetQuery query)
     {
-        List<Exercise> exercises = await _exercises.Where(exercise =>
-            query.Workouts.Select(x => x.TrainingExercises.SelectMany(y => y.Exercise.ToLower())).ToList()
-                .Contains(exercise.Name.ToLower())).ToListAsync();
+        var queryWorkoutList = query.Workouts.SelectMany(x => x.TrainingExercises.Select(y => y.Exercise.ToLower()))
+            .ToList();
+
+        List<Exercise> exercises = await _exercises.VirtualInclude().Where(exercise =>
+            queryWorkoutList.Contains(exercise.Name.ToLower())).ToListAsync();
 
         #region Workouts
 
-        List<Workout> workouts = new();
+        List<WorkoutViewModel> workouts = new();
 
         foreach (var workout in query.Workouts)
         {
-            List<TrainingExercise> trainingExercises = new();
+            List<TrainingExerciseViewModel> trainingExercises = new();
 
             foreach (var trainingExercise in workout.TrainingExercises)
             {
@@ -36,7 +38,9 @@ public class TrainingHandler
 
                 trainingExercises.Add(new()
                 {
-                    Exercise = exercise,
+                    Name = exercise!.Name,
+                    MainMuscle = exercise.Muscle.MainMuscle.ToString(),
+                    Muscle = exercise.Muscle.Name,
                     Reps = trainingExercise.Reps,
                     Sets = trainingExercise.Sets,
                     Observations = trainingExercise.Observations
@@ -48,7 +52,7 @@ public class TrainingHandler
 
         #endregion
 
-        TrainingSheet trainingSheet = new()
+        TrainingSheetViewModel trainingSheet = new()
         {
             Workouts = workouts,
             ChangeDate = query.ChangeDate

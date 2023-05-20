@@ -29,8 +29,7 @@ public static class Services
 
         #region Repository
 
-        services.AddScoped<IRepository<Muscle>, Repository<Muscle>>();
-        services.AddScoped<IRepository<Exercise>, Repository<Exercise>>();
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         #endregion
 

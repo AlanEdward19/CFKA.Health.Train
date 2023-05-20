@@ -15,10 +15,7 @@ namespace CFKA.Health.Train.API.Controllers
             _handler = handler;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> BuildTrainingSheet([FromBody] BuildTrainingSheetQuery query)
-        {
-            return Ok(_handler.BuildTrainingSheet(query));
-        }
+        [HttpPost]
+        public async Task<IActionResult> BuildTrainingSheet([FromBody] BuildTrainingSheetQuery query) => Ok(await _handler.BuildTrainingSheet(query));
     }
 }

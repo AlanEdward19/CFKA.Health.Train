@@ -2,6 +2,7 @@
 using CFKA.Health.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CFKA.Health.Infrastructure.Migrations
 {
     [DbContext(typeof(CFKATrainDbContext))]
-    partial class CFKATrainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230519001304_updateExerciseTableWithDefaultValues")]
+    partial class updateExerciseTableWithDefaultValues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,7 @@ namespace CFKA.Health.Infrastructure.Migrations
 
                     b.HasIndex("MuscleId");
 
-                    b.ToTable("Exercises", (string)null);
+                    b.ToTable("Exercises");
 
                     b.HasData(
                         new
@@ -1094,7 +1097,7 @@ namespace CFKA.Health.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Muscles", (string)null);
+                    b.ToTable("Muscles");
 
                     b.HasData(
                         new

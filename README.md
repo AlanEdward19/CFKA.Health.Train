@@ -5,9 +5,12 @@ Microserviço de criação de fichas de treino para musculação.
 
 Tem intuito de facilitar a criação de fichas de treino, para personal trainers, professores de educação fisica, ou até mesmo intusiastas que queiram montar seus proprios treinos com facilidade.
 
-Estado atual reflete apenas a criação de algumas agrupamentos musculares (além dos grupos principais, que ja se encontram presentes), criações de exercicios utilizando repetições, series e quais agrupamentos fortalece naquele exercicio, atualizações constantes a caminho.
+Estado atual reflete apenas a criação de algumas agrupamentos musculares (além dos grupos principais, que ja se encontram presentes), criações de exercicios utilizando repetições, series e quais agrupamentos fortalece naquele exercicio, fichas de treino que por enquanto ainda não podem ser exportadas, atualizações constantes a caminho.
 
-Proxima Atualização esperada: Possibilidade de exportar para um Excel personalizado, e montar a ficha de treino, visto que atualmente só é possivel cadastrar musculos e exercicios.
+Proxima Atualização esperada: Possibilidade de exportar para um Excel personalizado.
+
+Uma interface Angular está sendo desenvolvida para uma melhor e mais simplificada utilização desse microserviço:
+[Link para o repositorio](https://github.com/AlanEdward19/CFKA.Health.Train.Front)
 
 ## Estruturação
 

@@ -10,6 +10,8 @@ public class CommandHandler
     }
 
     public async Task Handle(ICommand command, int id) => await _handler.Update(command, id);
+
     public async Task Handle(ICommand command) => await _handler.Insert(command);
+
     public async Task Handle(int id) => await _handler.Delete(id);
 }

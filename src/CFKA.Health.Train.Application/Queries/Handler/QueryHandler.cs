@@ -1,4 +1,6 @@
-﻿namespace CFKA.Health.Application.Queries.Handler;
+﻿using Microsoft.Extensions.Logging;
+
+namespace CFKA.Health.Application.Queries.Handler;
 
 public class QueryHandler<T>
 {
@@ -9,6 +11,10 @@ public class QueryHandler<T>
         _handler = handler;
     }
 
-    public async Task<T> Handle(int id) =>  await _handler.GetById(id);
+    public async Task<T> Handle(int id)
+    {
+        return await _handler.GetById(id);
+    }
+
     public async Task<List<T>> Handle() => await _handler.GetAll();
 }

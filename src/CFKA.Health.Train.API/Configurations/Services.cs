@@ -33,6 +33,20 @@ public static class Services
 
         #endregion
 
+        #region CORS
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+        });
+
+        #endregion
+
         services.AddScoped<TrainingHandler>();
 
         return services;

@@ -13,4 +13,10 @@ public class Exercise
 
     [ForeignKey(nameof(MuscleId))]
     public virtual Muscle Muscle { get; set; }
+
+    public string GetExerciseName(ELanguage language) => language switch
+    {
+        ELanguage.English => EnName,
+        ELanguage.Portuguese => PtName
+    };
 }

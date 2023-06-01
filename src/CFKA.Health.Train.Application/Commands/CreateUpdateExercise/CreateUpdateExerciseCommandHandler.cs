@@ -25,19 +25,20 @@ public class CreateUpdateExerciseCommandHandler : ICommandHandler
         var model = command as CreateUpdateExerciseCommand;
 
         _logger.LogInformation($"Retrieving Muscle of name: {model!.Muscle}");
-        Muscle muscle= await _muscles.Where(x => x.Name.ToLower().Equals(model!.Muscle.ToLower())).FirstAsync();
+        Muscle muscle= await _muscles.Where(x => x.EnName.ToLower().Equals(model!.Muscle.ToLower())).FirstAsync();
 
         Exercise exercise = new()
         {
-            Name = model.Name,
+            EnName = model.EnName,
+            PtName = model.PtName,
             MuscleId = muscle.Id
         };
 
         _logger.LogInformation($"""
             Inserting new Exercise 
             With values:
-                Name: {model.Name},
-                MuscleName: {muscle.Name}
+                Name: {model.EnName},
+                MuscleName: {muscle.EnName}
             """);
 
         await _repository.AddAsync(exercise);
@@ -52,19 +53,20 @@ public class CreateUpdateExerciseCommandHandler : ICommandHandler
         var model = command as CreateUpdateExerciseCommand;
 
         _logger.LogInformation($"Retrieving Muscle of name: {model!.Muscle}");
-        Muscle muscle = await _muscles.Where(x => x.Name.ToLower().Equals(model!.Muscle.ToLower())).FirstAsync();
+        Muscle muscle = await _muscles.Where(x => x.EnName.ToLower().Equals(model!.Muscle.ToLower())).FirstAsync();
 
         Exercise exercise = new()
         {
-            Name = model.Name,
+            EnName = model.EnName,
+            PtName = model.PtName,
             MuscleId = muscle.Id
         };
 
         _logger.LogInformation($"""
             Updating Exercise with id: {id} 
             With values:
-                Name: {model.Name},
-                MuscleName: {muscle.Name}
+                Name: {model.EnName},
+                MuscleName: {muscle.EnName}
             """);
 
         await _repository.UpdateAsync(exercise, id);

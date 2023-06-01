@@ -22,14 +22,15 @@ public class CreateUpdateMuscleCommandHandler : ICommandHandler
 
         Muscle muscle = new()
         {
-            Name = model.Name,
+            EnName = model.EnName,
+            PtName = model.PtName,
             MainMuscle = mainMuscle
         };
 
         _logger.LogInformation($"""
             Inserting new Muscle 
             With values:
-                Name: {model.Name},
+                Name: {model.EnName},
                 MainMuscle: {mainMuscle}
             """);
 
@@ -47,14 +48,15 @@ public class CreateUpdateMuscleCommandHandler : ICommandHandler
 
         Muscle muscle = new()
         {
-            Name = model.Name,
+            EnName = model.EnName,
+            PtName = model.PtName,
             MainMuscle = mainMuscle
         };
 
         _logger.LogInformation($"""
             Updating Muscle with id: {id} 
             With values:
-                Name: {model.Name},
+                Name: {model.EnName},
                 MainMuscle: {mainMuscle}
             """);
 

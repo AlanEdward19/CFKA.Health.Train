@@ -18,21 +18,24 @@ public class CFKATrainDbContext : DbContext
         Muscle upperChest = new()
         {
             Id = 1,
-            Name = "Upper Chest",
+            EnName = "Upper Chest",
+            PtName = "Peitoral Superior",
             MainMuscle = EMuscle.Chest
         };
 
         Muscle middleChest = new()
         {
             Id = 2,
-            Name = "Middle Chest",
+            EnName = "Middle Chest",
+            PtName = "Peitoral Medio",
             MainMuscle = EMuscle.Chest
         };
 
         Muscle lowerChest = new()
         {
             Id = 3,
-            Name = "Lower Chest",
+            EnName = "Lower Chest",
+            PtName = "Peitoral Inferior",
             MainMuscle = EMuscle.Chest
         };
 
@@ -43,21 +46,24 @@ public class CFKATrainDbContext : DbContext
         Muscle trapezius = new()
         {
             Id = 4,
-            Name = "Trapezius",
+            EnName = "Trapezius",
+            PtName = "Trapezio",
             MainMuscle = EMuscle.Back
         };
 
         Muscle lats = new()
         {
             Id = 5,
-            Name = "Lats",
+            EnName = "Lats",
+            PtName = "Dorsal",
             MainMuscle = EMuscle.Back
         };
 
         Muscle lowBack = new()
         {
             Id = 6,
-            Name = "Low Back",
+            EnName = "Low Back",
+            PtName = "Lombar",
             MainMuscle = EMuscle.Back
         };
 
@@ -68,21 +74,24 @@ public class CFKATrainDbContext : DbContext
         Muscle brachialis = new()
         {
             Id = 7,
-            Name = "Brachialis",
+            EnName = "Brachialis",
+            PtName = "Braquial",
             MainMuscle = EMuscle.Biceps
         };
 
         Muscle brachioradialis = new()
         {
             Id = 8,
-            Name = "Brachioradialis",
+            EnName = "Brachioradialis",
+            PtName = "Braquiorradial",
             MainMuscle = EMuscle.Biceps
         };
 
         Muscle bicepsBrachii = new()
         {
             Id = 9,
-            Name = "Biceps Brachii",
+            EnName = "Biceps Brachii",
+            PtName = "Biceps Braquial",
             MainMuscle = EMuscle.Biceps
         };
 
@@ -93,21 +102,24 @@ public class CFKATrainDbContext : DbContext
         Muscle longHeadOfTriceps = new()
         {
             Id = 10,
-            Name = "Long Head of Triceps",
+            EnName = "Long Head of Triceps",
+            PtName = "Cabeça Longa do Triceps",
             MainMuscle = EMuscle.Triceps
         };
 
         Muscle medialHeadOfTriceps = new()
         {
             Id = 11,
-            Name = "Medial Head of Triceps",
+            EnName = "Medial Head of Triceps",
+            PtName = "Cabeça Media do Triceps",
             MainMuscle = EMuscle.Triceps
         };
 
         Muscle lateralHeadOfTriceps = new()
         {
             Id = 12,
-            Name = "Lateral Head of Triceps",
+            EnName = "Lateral Head of Triceps",
+            PtName = "Cabeça Lateral do Triceps",
             MainMuscle = EMuscle.Triceps
         };
 
@@ -118,21 +130,24 @@ public class CFKATrainDbContext : DbContext
         Muscle upperAbs = new()
         {
             Id = 13,
-            Name = "Upper Abs",
+            EnName = "Upper Abs",
+            PtName = "Abdominais Superiores",
             MainMuscle = EMuscle.Abs
         };
 
         Muscle lowerAbs = new()
         {
             Id = 14,
-            Name = "Lower Abs",
+            EnName = "Lower Abs",
+            PtName = "Abdominais Inferiores",
             MainMuscle = EMuscle.Abs
         };
 
         Muscle obliques = new()
         {
             Id = 15,
-            Name = "Obliques",
+            EnName = "Obliques",
+            PtName = "Oblíquos",
             MainMuscle = EMuscle.Abs
         };
 
@@ -143,21 +158,24 @@ public class CFKATrainDbContext : DbContext
         Muscle upperCalf = new()
         {
             Id = 16,
-            Name = "Gastrocnemius (Upper Calf)",
+            EnName = "Gastrocnemius (Upper Calf)",
+            PtName = "Gastrocnêmio (Parte superior da panturrilha)",
             MainMuscle = EMuscle.Calves
         };
 
         Muscle lowerCalf = new()
         {
             Id = 17,
-            Name = "Soleus (Lower Calf)",
+            EnName = "Soleus (Lower Calf)",
+            PtName = "Sóleo (Parte inferior da panturrilha)",
             MainMuscle = EMuscle.Calves
         };
 
         Muscle tibialisAnterior = new()
         {
             Id = 18,
-            Name = "Tibialis Anterior",
+            EnName = "Tibialis Anterior",
+            PtName = "Tibial Anterior",
             MainMuscle = EMuscle.Calves
         };
 
@@ -168,7 +186,8 @@ public class CFKATrainDbContext : DbContext
         Muscle vastusLateralis = new()
         {
             Id = 19,
-            Name = "Vastus Lateralis",
+            EnName = "Vastus Lateralis",
+            PtName = "Vasto lateral",
             MainMuscle = EMuscle.Quadriceps
         };
 
@@ -176,14 +195,16 @@ public class CFKATrainDbContext : DbContext
         Muscle vastusMedialis = new()
         {
             Id = 20,
-            Name = "Vastus Medialis",
+            EnName = "Vastus Medialis",
+            PtName = "Vasto Medial",
             MainMuscle = EMuscle.Quadriceps
         };
 
         Muscle rectusFemoris = new()
         {
             Id = 21,
-            Name = "Rectus Femoris",
+            EnName = "Rectus Femoris",
+            PtName = "Reto Femoral",
             MainMuscle = EMuscle.Quadriceps
         };
 
@@ -194,21 +215,24 @@ public class CFKATrainDbContext : DbContext
         Muscle gluteusMaximus = new()
         {
             Id = 22,
-            Name = "Gluteus Maximus",
+            EnName = "Gluteus Maximus",
+            PtName = "Gluteo Maximo",
             MainMuscle = EMuscle.Glutes
         };
 
         Muscle gluteusMedius = new()
         {
             Id = 23,
-            Name = "Gluteus Medius",
+            EnName = "Gluteus Medius",
+            PtName = "Gluteo Medio",
             MainMuscle = EMuscle.Glutes
         };
 
         Muscle gluteusMinimus = new()
         {
             Id = 24,
-            Name = "Gluteus Minimus",
+            EnName = "Gluteus Minimus",
+            PtName = "Gluteo Minimo",
             MainMuscle = EMuscle.Glutes
         };
 
@@ -219,21 +243,24 @@ public class CFKATrainDbContext : DbContext
         Muscle wristFlexors = new()
         {
             Id = 25,
-            Name = "Wrist Flexors",
+            EnName = "Wrist Flexors",
+            PtName = "Flexores de Punho",
             MainMuscle = EMuscle.Forearms
         };
 
         Muscle wristExtensors = new()
         {
             Id = 26,
-            Name = "Wrist Extensors",
+            EnName = "Wrist Extensors",
+            PtName = "Extensores de Punho",
             MainMuscle = EMuscle.Forearms
         };
 
         Muscle grip = new()
         {
             Id = 27,
-            Name = "Grip",
+            EnName = "Grip",
+            PtName = "Pegada",
             MainMuscle = EMuscle.Forearms
         };
 
@@ -275,31 +302,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 1,
-                Name = "Incline Bench Press",
+                EnName = "Incline Bench Press",
                 MuscleId = upperChest.Id
             },
             new()
             {
                 Id = 2,
-                Name = "Incline Bench Press with Dumbbells",
+                EnName = "Incline Bench Press with Dumbbells",
                 MuscleId = upperChest.Id
             },
             new()
             {
                 Id = 3,
-                Name = "Low Pulley Crossover",
+                EnName = "Low Pulley Crossover",
                 MuscleId = upperChest.Id
             },
             new()
             {
                 Id = 4,
-                Name = "Incline Dumbbell Flyes",
+                EnName = "Incline Dumbbell Flyes",
                 MuscleId = upperChest.Id
             },
             new()
             {
                 Id = 5,
-                Name = "Incline Push-Ups",
+                EnName = "Incline Push-Ups",
                 MuscleId = upperChest.Id
             },
 
@@ -310,55 +337,55 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 6,
-                Name = "Bench Press",
+                EnName = "Bench Press",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 7,
-                Name = "Bench Press with Dumbbells",
+                EnName = "Bench Press with Dumbbells",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 8,
-                Name = "Pulley Crossover",
+                EnName = "Pulley Crossover",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 9,
-                Name = "Machine Crossover",
+                EnName = "Machine Crossover",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 10,
-                Name = "Push-Up",
+                EnName = "Push-Up",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 11,
-                Name = "Dumbbell Bench Press",
+                EnName = "Dumbbell Bench Press",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 12,
-                Name = "Chest Press Machine",
+                EnName = "Chest Press Machine",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 13,
-                Name = "Dips",
+                EnName = "Dips",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 14,
-                Name = "Cable Chest Press",
+                EnName = "Cable Chest Press",
                 MuscleId = middleChest.Id
             },
 
@@ -369,31 +396,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 15,
-                Name = "Decline Bench Press",
+                EnName = "Decline Bench Press",
                 MuscleId = lowerChest.Id
             },
             new()
             {
                 Id = 16,
-                Name = "Decline Bench Press with Dumbbells",
+                EnName = "Decline Bench Press with Dumbbells",
                 MuscleId = lowerChest.Id
             },
             new()
             {
                 Id = 17,
-                Name = "High Pulley Crossover",
+                EnName = "High Pulley Crossover",
                 MuscleId = lowerChest.Id
             },
             new()
             {
                 Id = 18,
-                Name = "Decline Dumbbell Flyes",
+                EnName = "Decline Dumbbell Flyes",
                 MuscleId = lowerChest.Id
             },
             new()
             {
                 Id = 19,
-                Name = "Decline Push-Ups",
+                EnName = "Decline Push-Ups",
                 MuscleId = lowerChest.Id
             },
 
@@ -408,91 +435,91 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 20,
-                Name = "Barbell high row",
+                EnName = "Barbell high row",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 21,
-                Name = "Dumbbells high row",
+                EnName = "Dumbbells high row",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 22,
-                Name = "Shoulder shrugs",
+                EnName = "Shoulder shrugs",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 23,
-                Name = "Trapeze raises",
+                EnName = "Trapeze raises",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 24,
-                Name = "Face pulls",
+                EnName = "Face pulls",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 25,
-                Name = "Upright rows",
+                EnName = "Upright rows",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 26,
-                Name = "Power cleans",
+                EnName = "Power cleans",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 27,
-                Name = "T-bar rows",
+                EnName = "T-bar rows",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 28,
-                Name = "Pull-ups",
+                EnName = "Pull-ups",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 29,
-                Name = "Lat pulldowns",
+                EnName = "Lat pulldowns",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 30,
-                Name = "Dumbbell Shrugs",
+                EnName = "Dumbbell Shrugs",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 31,
-                Name = "Bent-Over Lateral Raises",
+                EnName = "Bent-Over Lateral Raises",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 32,
-                Name = "Kettlebell Swings",
+                EnName = "Kettlebell Swings",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 33,
-                Name = "Arnold Press",
+                EnName = "Arnold Press",
                 MuscleId = trapezius.Id
             },
             new()
             {
                 Id = 34,
-                Name = "Prone Y Raises",
+                EnName = "Prone Y Raises",
                 MuscleId = trapezius.Id
             },
 
@@ -503,91 +530,91 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 35,
-                Name = "Front Pulley",
+                EnName = "Front Pulley",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 36,
-                Name = "Back Pulley",
+                EnName = "Back Pulley",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 37,
-                Name = "Bent-over row",
+                EnName = "Bent-over row",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 38,
-                Name = "Pull-ups",
+                EnName = "Pull-ups",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 39,
-                Name = "Lat pulldowns",
+                EnName = "Lat pulldowns",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 40,
-                Name = "Seated cable rows",
+                EnName = "Seated cable rows",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 41,
-                Name = "Wide grip pull-ups",
+                EnName = "Wide grip pull-ups",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 42,
-                Name = "Inverted rows",
+                EnName = "Inverted rows",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 43,
-                Name = "Straight arm pulldowns",
+                EnName = "Straight arm pulldowns",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 44,
-                Name = "Single-arm dumbbell rows",
+                EnName = "Single-arm dumbbell rows",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 45,
-                Name = "Barbell Rows",
+                EnName = "Barbell Rows",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 46,
-                Name = "Close-grip Pulldowns",
+                EnName = "Close-grip Pulldowns",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 47,
-                Name = "Underhand Cable Pulldowns",
+                EnName = "Underhand Cable Pulldowns",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 48,
-                Name = "Seated Row Machine",
+                EnName = "Seated Row Machine",
                 MuscleId = lats.Id
             },
             new()
             {
                 Id = 49,
-                Name = "Wide Grip Cable Rows",
+                EnName = "Wide Grip Cable Rows",
                 MuscleId = lats.Id
             },
 
@@ -598,92 +625,92 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 50,
-                Name = "Hyperextensions",
+                EnName = "Hyperextensions",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 51,
-                Name = "Deadlifts",
+                EnName = "Deadlifts",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 52,
-                Name = "Good mornings",
+                EnName = "Good mornings",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 53,
-                Name = "Supermans",
+                EnName = "Supermans",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 54,
-                Name = "Back extensions",
+                EnName = "Back extensions",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 55,
-                Name = "Romanian deadlifts",
+                EnName = "Romanian deadlifts",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 56,
-                Name = "Reverse hypers",
+                EnName = "Reverse hypers",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 57,
-                Name = "Bird dogs",
+                EnName = "Bird dogs",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 58,
-                Name = "Russian twists",
+                EnName = "Russian twists",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 59,
-                Name = "Plank variations",
+                EnName = "Plank variations",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 60,
-                Name = "Seated Good Mornings",
+                EnName = "Seated Good Mornings",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 61,
-                Name = "Prone Back Extensions",
+                EnName = "Prone Back Extensions",
                 MuscleId = lowBack.Id
             },
             new()
             {
 
                 Id = 62,
-                Name = "Seated Cable Hyperextensions",
+                EnName = "Seated Cable Hyperextensions",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 63,
-                Name = "Kettlebell Swings",
+                EnName = "Kettlebell Swings",
                 MuscleId = lowBack.Id
             },
             new()
             {
                 Id = 64,
-                Name = "Reverse Hyper Machine",
+                EnName = "Reverse Hyper Machine",
                 MuscleId = lowBack.Id
             },
 
@@ -698,32 +725,32 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 65,
-                Name = "Barbell curls",
+                EnName = "Barbell curls",
                 MuscleId = brachialis.Id
             },
             new()
             {
 
                 Id = 66,
-                Name = "Dumbbell Hammer curls",
+                EnName = "Dumbbell Hammer curls",
                 MuscleId = brachialis.Id
             },
             new()
             {
                 Id = 67,
-                Name = "Preacher Hammer curls",
+                EnName = "Preacher Hammer curls",
                 MuscleId = brachialis.Id
             },
             new()
             {
                 Id = 68,
-                Name = "Cable Hammer curls",
+                EnName = "Cable Hammer curls",
                 MuscleId = brachialis.Id
             },
             new()
             {
                 Id = 69,
-                Name = "Incline Hammer curls",
+                EnName = "Incline Hammer curls",
                 MuscleId = brachialis.Id
             },
 
@@ -734,31 +761,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 70,
-                Name = "Hammer curls",
+                EnName = "Hammer curls",
                 MuscleId = brachioradialis.Id
             },
             new()
             {
                 Id = 71,
-                Name = "Reverse curls",
+                EnName = "Reverse curls",
                 MuscleId = brachioradialis.Id
             },
             new()
             {
                 Id = 72,
-                Name = "Wrist curls",
+                EnName = "Wrist curls",
                 MuscleId = brachioradialis.Id
             },
             new()
             {
                 Id = 73,
-                Name = "Zottman curls",
+                EnName = "Zottman curls",
                 MuscleId = brachioradialis.Id
             },
             new()
             {
                 Id = 74,
-                Name = "EZ bar reverse curls",
+                EnName = "EZ bar reverse curls",
                 MuscleId = brachioradialis.Id
             },
 
@@ -769,79 +796,79 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 75,
-                Name = "Dumbbell curls",
+                EnName = "Dumbbell curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 76,
-                Name = "Preacher curls",
+                EnName = "Preacher curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 77,
-                Name = "Concentration curls",
+                EnName = "Concentration curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 78,
-                Name = "EZ bar curls",
+                EnName = "EZ bar curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 79,
-                Name = "Incline dumbbell curls",
+                EnName = "Incline dumbbell curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 80,
-                Name = "Cable curls",
+                EnName = "Cable curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 81,
-                Name = "Spider curls",
+                EnName = "Spider curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 82,
-                Name = "Chin-ups",
+                EnName = "Chin-ups",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 83,
-                Name = "Seated Dumbbell curls",
+                EnName = "Seated Dumbbell curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 84,
-                Name = "Hammer Strength curls",
+                EnName = "Hammer Strength curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 85,
-                Name = "Machine curls",
+                EnName = "Machine curls",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 86,
-                Name = "Close-grip Chin-ups",
+                EnName = "Close-grip Chin-ups",
                 MuscleId = bicepsBrachii.Id
             },
             new()
             {
                 Id = 87,
-                Name = "Preacher Hammer curls",
+                EnName = "Preacher Hammer curls",
                 MuscleId = bicepsBrachii.Id
             },
 
@@ -856,31 +883,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 88,
-                Name = "Close grip bench press",
+                EnName = "Close grip bench press",
                 MuscleId = longHeadOfTriceps.Id
             },
             new()
             {
                 Id = 89,
-                Name = "Dips",
+                EnName = "Dips",
                 MuscleId = longHeadOfTriceps.Id
             },
             new()
             {
                 Id = 90,
-                Name = "Diamond push-ups",
+                EnName = "Diamond push-ups",
                 MuscleId = longHeadOfTriceps.Id
             },
             new()
             {
                 Id = 91,
-                Name = "Overhead dumbbell extension",
+                EnName = "Overhead dumbbell extension",
                 MuscleId = longHeadOfTriceps.Id
             },
             new()
             {
                 Id = 92,
-                Name = "Reverse grip triceps pushdown",
+                EnName = "Reverse grip triceps pushdown",
                 MuscleId = longHeadOfTriceps.Id
             },
 
@@ -891,31 +918,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 93,
-                Name = "Triceps pushdown",
+                EnName = "Triceps pushdown",
                 MuscleId = medialHeadOfTriceps.Id
             },
             new()
             {
                 Id = 94,
-                Name = "Triceps kickbacks",
+                EnName = "Triceps kickbacks",
                 MuscleId = medialHeadOfTriceps.Id
             },
             new()
             {
                 Id = 95,
-                Name = "Triceps rope pushdown",
+                EnName = "Triceps rope pushdown",
                 MuscleId = medialHeadOfTriceps.Id
             },
             new()
             {
                 Id = 96,
-                Name = "Close grip push-ups",
+                EnName = "Close grip push-ups",
                 MuscleId = medialHeadOfTriceps.Id
             },
             new()
             {
                 Id = 97,
-                Name = "Bench dips",
+                EnName = "Bench dips",
                 MuscleId = medialHeadOfTriceps.Id
             },
 
@@ -927,31 +954,31 @@ public class CFKATrainDbContext : DbContext
             {
 
                 Id = 98,
-                Name = "Overhead triceps extension",
+                EnName = "Overhead triceps extension",
                 MuscleId = lateralHeadOfTriceps.Id
             },
             new()
             {
                 Id = 99,
-                Name = "Skull crushers",
+                EnName = "Skull crushers",
                 MuscleId = lateralHeadOfTriceps.Id
             },
             new()
             {
                 Id = 100,
-                Name = "Bench dips",
+                EnName = "Bench dips",
                 MuscleId = lateralHeadOfTriceps.Id
             },
             new()
             {
                 Id = 101,
-                Name = "Overhead cable triceps extension",
+                EnName = "Overhead cable triceps extension",
                 MuscleId = lateralHeadOfTriceps.Id
             },
             new()
             {
                 Id = 102,
-                Name = "Dumbbell triceps kickbacks",
+                EnName = "Dumbbell triceps kickbacks",
                 MuscleId = lateralHeadOfTriceps.Id
             },
 
@@ -966,31 +993,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 103,
-                Name = "Crunches",
+                EnName = "Crunches",
                 MuscleId = upperAbs.Id
             },
             new()
             {
                 Id = 104,
-                Name = "Plank",
+                EnName = "Plank",
                 MuscleId = upperAbs.Id
             },
             new()
             {
                 Id = 105,
-                Name = "Sit-ups",
+                EnName = "Sit-ups",
                 MuscleId = upperAbs.Id
             },
             new()
             {
                 Id = 106,
-                Name = "Mountain climbers",
+                EnName = "Mountain climbers",
                 MuscleId = upperAbs.Id
             },
             new()
             {
                 Id = 107,
-                Name = "Ab wheel rollouts",
+                EnName = "Ab wheel rollouts",
                 MuscleId = upperAbs.Id
             },
 
@@ -1001,31 +1028,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 108,
-                Name = "Leg raises",
+                EnName = "Leg raises",
                 MuscleId = lowerAbs.Id
             },
             new()
             {
                 Id = 109,
-                Name = "Hanging knee raises",
+                EnName = "Hanging knee raises",
                 MuscleId = lowerAbs.Id
             },
             new()
             {
                 Id = 110,
-                Name = "Reverse crunches",
+                EnName = "Reverse crunches",
                 MuscleId = lowerAbs.Id
             },
             new()
             {
                 Id = 111,
-                Name = "Scissor kicks",
+                EnName = "Scissor kicks",
                 MuscleId = lowerAbs.Id
             },
             new()
             {
                 Id = 112,
-                Name = "Captain's chair leg raises",
+                EnName = "Captain's chair leg raises",
                 MuscleId = lowerAbs.Id
             },
 
@@ -1036,31 +1063,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 113,
-                Name = "Russian twists",
+                EnName = "Russian twists",
                 MuscleId = obliques.Id
             },
             new()
             {
                 Id = 114,
-                Name = "Side plank",
+                EnName = "Side plank",
                 MuscleId = obliques.Id
             },
             new()
             {
                 Id = 115,
-                Name = "Bicycle crunches",
+                EnName = "Bicycle crunches",
                 MuscleId = obliques.Id
             },
             new()
             {
                 Id = 116,
-                Name = "Woodchoppers",
+                EnName = "Woodchoppers",
                 MuscleId = obliques.Id
             },
             new()
             {
                 Id = 117,
-                Name = "Standing oblique crunches",
+                EnName = "Standing oblique crunches",
                 MuscleId = obliques.Id
             },
 
@@ -1075,31 +1102,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 118,
-                Name = "Standing calf raises",
+                EnName = "Standing calf raises",
                 MuscleId = upperCalf.Id
             },
             new()
             {
                 Id = 119,
-                Name = "Donkey calf raises",
+                EnName = "Donkey calf raises",
                 MuscleId = upperCalf.Id
             },
             new()
             {
                 Id = 120,
-                Name = "Calf press on leg press machine",
+                EnName = "Calf press on leg press machine",
                 MuscleId = upperCalf.Id
             },
             new()
             {
                 Id = 121,
-                Name = "Skipping rope",
+                EnName = "Skipping rope",
                 MuscleId = upperCalf.Id
             },
             new()
             {
                 Id = 122,
-                Name = "Jump rope calf jumps",
+                EnName = "Jump rope calf jumps",
                 MuscleId = upperCalf.Id
             },
 
@@ -1110,31 +1137,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 123,
-                Name = "Seated calf raises",
+                EnName = "Seated calf raises",
                 MuscleId = lowerCalf.Id
             },
             new()
             {
                 Id = 124,
-                Name = "Single-leg calf raises",
+                EnName = "Single-leg calf raises",
                 MuscleId = lowerCalf.Id
             },
             new()
             {
                 Id = 125,
-                Name = "Calf raises on a step",
+                EnName = "Calf raises on a step",
                 MuscleId = lowerCalf.Id
             },
             new()
             {
                 Id = 126,
-                Name = "Sled pushes",
+                EnName = "Sled pushes",
                 MuscleId = lowerCalf.Id
             },
             new()
             {
                 Id = 127,
-                Name = "Calf raises with resistance bands",
+                EnName = "Calf raises with resistance bands",
                 MuscleId = lowerCalf.Id
             },
 
@@ -1145,25 +1172,25 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 128,
-                Name = "Toe raises",
+                EnName = "Toe raises",
                 MuscleId = tibialisAnterior.Id
             },
             new()
             {
                 Id = 129,
-                Name = "Box jumps",
+                EnName = "Box jumps",
                 MuscleId = tibialisAnterior.Id
             },
             new()
             {
                 Id = 130,
-                Name = "Ankle dorsiflexion with resistance band",
+                EnName = "Ankle dorsiflexion with resistance band",
                 MuscleId = tibialisAnterior.Id
             },
             new()
             {
                 Id = 131,
-                Name = "Treadmill incline walks",
+                EnName = "Treadmill incline walks",
                 MuscleId = tibialisAnterior.Id
             },
 
@@ -1178,31 +1205,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 132,
-                Name = "Squats",
+                EnName = "Squats",
                 MuscleId = vastusLateralis.Id
             },
             new()
             {
                 Id = 133,
-                Name = "Step-ups",
+                EnName = "Step-ups",
                 MuscleId = vastusLateralis.Id
             },
             new()
             {
                 Id = 134,
-                Name = "Front squats",
+                EnName = "Front squats",
                 MuscleId = vastusLateralis.Id
             },
             new()
             {
                 Id = 135,
-                Name = "Wall sits",
+                EnName = "Wall sits",
                 MuscleId = vastusLateralis.Id
             },
             new()
             {
                 Id = 136,
-                Name = "Leg press",
+                EnName = "Leg press",
                 MuscleId = vastusLateralis.Id
             },
 
@@ -1213,31 +1240,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 137,
-                Name = "Lunges",
+                EnName = "Lunges",
                 MuscleId = vastusMedialis.Id
             },
             new()
             {
                 Id = 138,
-                Name = "Hack squats",
+                EnName = "Hack squats",
                 MuscleId = vastusMedialis.Id
             },
             new()
             {
                 Id = 139,
-                Name = "Leg extensions",
+                EnName = "Leg extensions",
                 MuscleId = vastusMedialis.Id
             },
             new()
             {
                 Id = 140,
-                Name = "Leg press",
+                EnName = "Leg press",
                 MuscleId = vastusMedialis.Id
             },
             new()
             {
                 Id = 141,
-                Name = "Leg press with feet high",
+                EnName = "Leg press with feet high",
                 MuscleId = vastusMedialis.Id
             },
 
@@ -1248,31 +1275,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 142,
-                Name = "Leg press",
+                EnName = "Leg press",
                 MuscleId = rectusFemoris.Id
             },
             new()
             {
                 Id = 143,
-                Name = "Bulgarian split squats",
+                EnName = "Bulgarian split squats",
                 MuscleId = rectusFemoris.Id
             },
             new()
             {
                 Id = 144,
-                Name = "Pistol squats",
+                EnName = "Pistol squats",
                 MuscleId = rectusFemoris.Id
             },
             new()
             {
                 Id = 145,
-                Name = "Lunges",
+                EnName = "Lunges",
                 MuscleId = rectusFemoris.Id
             },
             new()
             {
                 Id = 146,
-                Name = "Leg extensions",
+                EnName = "Leg extensions",
                 MuscleId = rectusFemoris.Id
             },
 
@@ -1287,31 +1314,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 147,
-                Name = "Hip thrusts",
+                EnName = "Hip thrusts",
                 MuscleId = gluteusMaximus.Id
             },
             new()
             {
                 Id = 148,
-                Name = "Donkey kicks",
+                EnName = "Donkey kicks",
                 MuscleId = gluteusMaximus.Id
             },
             new()
             {
                 Id = 149,
-                Name = "Sumo squats",
+                EnName = "Sumo squats",
                 MuscleId = gluteusMaximus.Id
             },
             new()
             {
                 Id = 150,
-                Name = "Kickbacks",
+                EnName = "Kickbacks",
                 MuscleId = gluteusMaximus.Id
             },
             new()
             {
                 Id = 151,
-                Name = "Bulgarian split squats",
+                EnName = "Bulgarian split squats",
                 MuscleId = gluteusMaximus.Id
             },
 
@@ -1322,25 +1349,25 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 152,
-                Name = "Clamshell exercises",
+                EnName = "Clamshell exercises",
                 MuscleId = gluteusMedius.Id
             },
             new()
             {
                 Id = 153,
-                Name = "Fire hydrants",
+                EnName = "Fire hydrants",
                 MuscleId = gluteusMedius.Id
             },
             new()
             {
                 Id = 154,
-                Name = "Side-lying leg lifts",
+                EnName = "Side-lying leg lifts",
                 MuscleId = gluteusMedius.Id
             },
             new()
             {
                 Id = 155,
-                Name = "Lateral band walks",
+                EnName = "Lateral band walks",
                 MuscleId = gluteusMedius.Id
             },
 
@@ -1351,25 +1378,25 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 156,
-                Name = "Glute bridges",
+                EnName = "Glute bridges",
                 MuscleId = gluteusMinimus.Id
             },
             new()
             {
                 Id = 157,
-                Name = "Single-leg hip thrusts",
+                EnName = "Single-leg hip thrusts",
                 MuscleId = gluteusMinimus.Id
             },
             new()
             {
                 Id = 158,
-                Name = "Banded crab walks",
+                EnName = "Banded crab walks",
                 MuscleId = gluteusMinimus.Id
             },
             new()
             {
                 Id = 159,
-                Name = "Reverse lunges",
+                EnName = "Reverse lunges",
                 MuscleId = gluteusMinimus.Id
             },
 
@@ -1384,31 +1411,31 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 160,
-                Name = "Wrist curls",
+                EnName = "Wrist curls",
                 MuscleId = wristFlexors.Id
             },
             new()
             {
                 Id = 161,
-                Name = "Plate curls",
+                EnName = "Plate curls",
                 MuscleId = wristFlexors.Id
             },
             new()
             {
                 Id = 162,
-                Name = "Pinch grip holds",
+                EnName = "Pinch grip holds",
                 MuscleId = wristFlexors.Id
             },
             new()
             {
                 Id = 163,
-                Name = "Finger curls",
+                EnName = "Finger curls",
                 MuscleId = wristFlexors.Id
             },
             new()
             {
                 Id = 164,
-                Name = "Dumbbell wrist pronation/supination",
+                EnName = "Dumbbell wrist pronation/supination",
                 MuscleId = wristFlexors.Id
             },
 
@@ -1419,25 +1446,25 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 165,
-                Name = "Reverse wrist curls",
+                EnName = "Reverse wrist curls",
                 MuscleId = wristExtensors.Id
             },
             new()
             {
                 Id = 166,
-                Name = "Hammer grip curls",
+                EnName = "Hammer grip curls",
                 MuscleId = wristExtensors.Id
             },
             new()
             {
                 Id = 167,
-                Name = "Bar hangs",
+                EnName = "Bar hangs",
                 MuscleId = wristExtensors.Id
             },
             new()
             {
                 Id = 168,
-                Name = "Wrist roller",
+                EnName = "Wrist roller",
                 MuscleId = wristExtensors.Id
             },
 
@@ -1448,25 +1475,25 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 169,
-                Name = "Grip strengthener exercises",
+                EnName = "Grip strengthener exercises",
                 MuscleId = grip.Id
             },
             new()
             {
                 Id = 170,
-                Name = "Towel hangs",
+                EnName = "Towel hangs",
                 MuscleId = grip.Id
             },
             new()
             {
                 Id = 171,
-                Name = "Farmer's walks",
+                EnName = "Farmer's walks",
                 MuscleId = grip.Id
             },
             new()
             {
                 Id = 172,
-                Name = "Plate pinches",
+                EnName = "Plate pinches",
                 MuscleId = grip.Id
             },
 

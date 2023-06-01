@@ -303,35 +303,35 @@ public class CFKATrainDbContext : DbContext
             {
                 Id = 1,
                 EnName = "Incline Bench Press",
-                PtName = "Supino Inclinado",
+                PtName = "Supino inclinado",
                 MuscleId = upperChest.Id
             },
             new()
             {
                 Id = 2,
                 EnName = "Incline Bench Press with Dumbbells",
-                PtName = "Supino Inclinado com Halteres",
+                PtName = "Supino inclinado com halteres",
                 MuscleId = upperChest.Id
             },
             new()
             {
                 Id = 3,
                 EnName = "Low Pulley Crossover",
-                PtName = "Crucifixo na Polia baixa",
+                PtName = "Crucifixo na polia baixa",
                 MuscleId = upperChest.Id
             },
             new()
             {
                 Id = 4,
                 EnName = "Incline Dumbbell Flyes",
-                PtName = "Crucifixo Inclinado com Halteres",
+                PtName = "Crucifixo inclinado com halteres",
                 MuscleId = upperChest.Id
             },
             new()
             {
                 Id = 5,
                 EnName = "Incline Push-Ups",
-                PtName = "Flexão Inclinado",
+                PtName = "Flexao inclinado",
                 MuscleId = upperChest.Id
             },
 
@@ -343,55 +343,64 @@ public class CFKATrainDbContext : DbContext
             {
                 Id = 6,
                 EnName = "Bench Press",
+                PtName = "Supino reto",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 7,
                 EnName = "Bench Press with Dumbbells",
+                PtName = "Supino reto com halteres",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 8,
                 EnName = "Pulley Crossover",
+                PtName = "Crucifixo na polia reto",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 9,
                 EnName = "Machine Crossover",
+                PtName = "Crucifixo na maquina",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 10,
                 EnName = "Push-Up",
+                PtName = "Flexao",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 11,
                 EnName = "Dumbbell Bench Press",
+                PtName = "Supino reto com halteres",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 12,
                 EnName = "Chest Press Machine",
+                PtName = "Supino reto na maquina",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 13,
                 EnName = "Dips",
+                PtName = "Mergulho",
                 MuscleId = middleChest.Id
             },
             new()
             {
                 Id = 14,
                 EnName = "Cable Chest Press",
-                MuscleId = middleChest.Id
+                PtName = "Supino com cabo",
+                MuscleId = middleChest.Id,
             },
 
             #endregion
@@ -401,30 +410,35 @@ public class CFKATrainDbContext : DbContext
             new()
             {
                 Id = 15,
+                PtName = "Supino declinado",
                 EnName = "Decline Bench Press",
                 MuscleId = lowerChest.Id
             },
             new()
             {
                 Id = 16,
+                PtName = "Supino declinado com halteres",
                 EnName = "Decline Bench Press with Dumbbells",
                 MuscleId = lowerChest.Id
             },
             new()
             {
                 Id = 17,
+                PtName = "Crucifixo na polia alta",
                 EnName = "High Pulley Crossover",
                 MuscleId = lowerChest.Id
             },
             new()
             {
                 Id = 18,
+                PtName = "Crucifixo declinado com halteres",
                 EnName = "Decline Dumbbell Flyes",
                 MuscleId = lowerChest.Id
             },
             new()
             {
                 Id = 19,
+                PtName = "Flexao declinado",
                 EnName = "Decline Push-Ups",
                 MuscleId = lowerChest.Id
             },

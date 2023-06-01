@@ -14,7 +14,7 @@ public class WorkoutViewModel
 
     public void SetTrainingName()
     {
-        var muscles = string.Join(",", Exercises.Select(exercise => exercise.MainMuscle).ToList());
+        var muscles = string.Join(",", Exercises.Select(exercise => exercise.MainMuscle).ToList().Distinct());
         var lastComma = muscles.LastIndexOf(",");
 
         Name = lastComma != -1 ? $"{muscles.Substring(0, lastComma)} and {muscles.Substring(lastComma + 1)}" : muscles;

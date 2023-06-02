@@ -62,7 +62,7 @@ public class TrainingHandler
                 trainingExercises.Add(new TrainingExerciseViewModel
                 {
                     Name = exercise.GetExerciseName(query.Language),
-                    MainMuscle = exercise.Muscle.MainMuscle.ToString(),
+                    MainMuscle = GetMuscleNameByLanguage(query.Language, exercise.Muscle.MainMuscle),
                     Muscle = exercise.Muscle.GetMuscleName(query.Language),
                     Reps = trainingExercise.Reps,
                     Sets = trainingExercise.Sets,
@@ -70,7 +70,7 @@ public class TrainingHandler
                 });
             }
 
-            workouts.Add(new WorkoutViewModel(trainingExercises));
+            workouts.Add(new WorkoutViewModel(trainingExercises, query.Language));
         }
 
         return workouts;
@@ -81,4 +81,27 @@ public class TrainingHandler
             ELanguage.English => exercises.FirstOrDefault(x => x.EnName.ToLower() == exerciseName),
             ELanguage.Portuguese => exercises.FirstOrDefault(x => x.PtName.ToLower() == exerciseName)
         };
+
+    private string GetMuscleNameByLanguage(ELanguage language, EMuscle muscle) => (language, muscle) switch
+    {
+        (ELanguage.Portuguese, EMuscle.Chest) => "Peito",
+        (ELanguage.Portuguese, EMuscle.Back) => "Costas",
+        (ELanguage.Portuguese, EMuscle.Biceps) => "Bíceps",
+        (ELanguage.Portuguese, EMuscle.Triceps) => "Tríceps",
+        (ELanguage.Portuguese, EMuscle.Abs) => "Abdominais",
+        (ELanguage.Portuguese, EMuscle.Calves) => "Panturrilhas",
+        (ELanguage.Portuguese, EMuscle.Quadriceps) => "Quadríceps",
+        (ELanguage.Portuguese, EMuscle.Glutes) => "Glúteos",
+        (ELanguage.Portuguese, EMuscle.Forearms) => "Antebraços",
+        (ELanguage.English, EMuscle.Chest) => "Chest",
+        (ELanguage.English, EMuscle.Back) => "Back",
+        (ELanguage.English, EMuscle.Biceps) => "Biceps",
+        (ELanguage.English, EMuscle.Triceps) => "Triceps",
+        (ELanguage.English, EMuscle.Abs) => "Abs",
+        (ELanguage.English, EMuscle.Calves) => "Calves",
+        (ELanguage.English, EMuscle.Quadriceps) => "Quadriceps",
+        (ELanguage.English, EMuscle.Glutes) => "Glutes",
+        (ELanguage.English, EMuscle.Forearms) => "Forearms",
+    };
+
 }

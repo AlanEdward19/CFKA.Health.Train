@@ -15,6 +15,7 @@ public class WorkoutViewModel
     public void SetTrainingName(ELanguage language)
     {
         var muscles = string.Join(", ", Exercises.Select(exercise => exercise.MainMuscle).ToList().Distinct());
+      
         var lastComma = muscles.LastIndexOf(",");
         string concatenation = language switch
         {

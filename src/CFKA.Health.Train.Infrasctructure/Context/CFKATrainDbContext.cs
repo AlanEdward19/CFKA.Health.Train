@@ -266,6 +266,34 @@ public class CFKATrainDbContext : DbContext
 
         #endregion
 
+        #region Shoulder
+
+        Muscle frontDeltoids = new()
+        {
+            Id = 28,
+            EnName = "Front Deltoids",
+            PtName = "Deltoides Frontais",
+            MainMuscle = EMuscle.Shoulder
+        };
+
+        Muscle sideDeltoids = new()
+        {
+            Id = 29,
+            EnName = "Side Deltoids",
+            PtName = "Deltoides Laterais",
+            MainMuscle = EMuscle.Shoulder
+        };
+
+        Muscle rearDeltoids = new()
+        {
+            Id = 30,
+            EnName = "Rear Deltoids",
+            PtName = "Deltoides Posteriores",
+            MainMuscle = EMuscle.Shoulder
+        };
+
+        #endregion
+
         modelBuilder.Entity<Muscle>().HasData(new List<Muscle>
         {
             #region Muscles
@@ -286,7 +314,9 @@ public class CFKATrainDbContext : DbContext
 
             gluteusMaximus, gluteusMedius, gluteusMinimus,
 
-            wristFlexors, wristExtensors, grip
+            wristFlexors, wristExtensors, grip,
+
+            frontDeltoids, sideDeltoids, rearDeltoids
 
             #endregion
         });
@@ -400,7 +430,7 @@ public class CFKATrainDbContext : DbContext
                 Id = 14,
                 EnName = "Cable Chest Press",
                 PtName = "Supino com cabo",
-                MuscleId = middleChest.Id,
+                MuscleId = middleChest.Id
             },
 
             #endregion
@@ -1665,6 +1695,130 @@ public class CFKATrainDbContext : DbContext
                 PtName = "Apertar de pratos",
                 MuscleId = grip.Id
             },
+
+            #endregion
+
+            #endregion
+
+            #region Shoulders
+
+            #region Front Deltoids
+
+            new()
+            {
+                Id = 173,
+                EnName = "Military Press",
+                PtName = "Desenvolvimento Militar",
+                MuscleId = frontDeltoids.Id
+            },
+            new()
+            {
+                Id = 174,
+                EnName = "Arnold Press",
+                PtName = "Arnold Press",
+                MuscleId = frontDeltoids.Id
+            },
+            new()
+            {
+                Id = 175,
+                EnName = "Front Dumbbell Raise",
+                PtName = "Elevação frontal com halteres",
+                MuscleId = frontDeltoids.Id
+            },
+            new()
+            {
+                Id = 176,
+                EnName = "Barbell Front Raise",
+                PtName = "Elevação frontal com barra",
+                MuscleId = frontDeltoids.Id
+            },
+            new()
+            {
+                Id = 177,
+                EnName = "Cable Front Raise",
+                PtName = "Elevação frontal com cabo",
+                MuscleId = frontDeltoids.Id
+            },
+
+            #endregion
+
+            #region Side Deltoids
+
+            new()
+            {
+                Id = 178,
+                EnName = "Lateral Raises",
+                PtName = "Elevação lateral",
+                MuscleId = sideDeltoids.Id
+            },
+            new()
+            {
+                Id = 179,
+                EnName = "Dumbbell Lateral Raises",
+                PtName = "Elevação lateral com halteres",
+                MuscleId = sideDeltoids.Id
+            },
+            new()
+            {
+                Id = 180,
+                EnName = "Cable Lateral Raises",
+                PtName = "Elevação lateral com cabo",
+                MuscleId = sideDeltoids.Id
+            },
+            new()
+            {
+                Id = 181,
+                EnName = "Machine Lateral Raises",
+                PtName = "Elevação lateral na máquina",
+                MuscleId = sideDeltoids.Id
+            },
+            new()
+            {
+                Id = 182,
+                EnName = "Bent-Over Lateral Raises",
+                PtName = "Elevação lateral inclinada",
+                MuscleId = sideDeltoids.Id
+            },
+
+            #endregion
+
+            #region Rear Deltoids
+
+            new()
+            {
+                Id = 183,
+                EnName = "Rear Deltoid Flyes",
+                PtName = "Flyes para deltoides posteriores",
+                MuscleId = rearDeltoids.Id
+            },
+            new()
+            {
+                Id = 184,
+                EnName = "Bent-Over Rear Deltoid Raises",
+                PtName = "Elevação de deltoides posteriores inclinado",
+                MuscleId = rearDeltoids.Id
+            },
+            new()
+            {
+                Id = 185,
+                EnName = "Cable Rear Deltoid Flyes",
+                PtName = "Flyes para deltoides posteriores com cabo",
+                MuscleId = rearDeltoids.Id
+            },
+            new()
+            {
+                Id = 186,
+                EnName = "Reverse Pec Deck Flyes",
+                PtName = "Flyes inversos no peck deck",
+                MuscleId = rearDeltoids.Id
+            },
+            new()
+            {
+                Id = 187,
+                EnName = "Face Pulls",
+                PtName = "Face Pulls",
+                MuscleId = rearDeltoids.Id
+            }
 
             #endregion
 

@@ -4,6 +4,7 @@ public enum EMuscle
 {
     Chest,
     Back,
+    Shoulder,
     Biceps,
     Triceps,
     Abs,

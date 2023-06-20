@@ -3,15 +3,14 @@
 public record MuscleViewModel
 {
     public string MainMuscle { get; private set; }
-    public string EnName { get; private set; }
-    public string PtName { get; private set; }
+    public string Name { get; private set; }
 
-    public MuscleViewModel(EMuscle muscle, string enName, string ptName)
+    public MuscleViewModel(string mainMuscle, string name)
     {
-        MainMuscle = muscle.ToString();
-        EnName = enName;
-        PtName = ptName;
+        MainMuscle = mainMuscle;
+        Name = name;
     }
 
-    public static MuscleViewModel ToEntity(Muscle entity) => new(entity.MainMuscle, entity.EnName, entity.PtName);
+    public static MuscleViewModel ToEntity(Muscle entity, ELanguage language) => new(entity.GetMainMuscleName(language),
+        language == ELanguage.English ? entity.EnName : entity.PtName);
 }

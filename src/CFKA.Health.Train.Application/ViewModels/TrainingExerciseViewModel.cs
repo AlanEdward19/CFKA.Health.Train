@@ -15,5 +15,6 @@ public record TrainingExerciseViewModel
         Observations = observations;
     }
 
-    public static TrainingExerciseViewModel ToEntity(TrainingExercise entity) => new(ExerciseViewModel.ToEntity(entity.Exercise), entity.Sets, entity.Reps, entity.Observations);
+    public static TrainingExerciseViewModel ToEntity(TrainingExercise entity, ELanguage language) => new(
+        ExerciseViewModel.ToEntity(entity.Exercise, language), entity.Sets, entity.Reps, entity.Observations);
 }

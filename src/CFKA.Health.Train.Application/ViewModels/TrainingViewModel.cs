@@ -3,24 +3,24 @@
 public record TrainingViewModel
 {
     public string Owner { get; private set; }
-    public string EnName { get; private set; }
-    public string PtName { get; private set; }
+    public string Name { get; private set; }
     public DateTime ChangeDate { get; private set; }
     public IEnumerable<TrainingExerciseViewModel> TrainingExercises { get; private set; }
 
-    public TrainingViewModel(string owner, string enName, string ptName, DateTime changeDate, IEnumerable<TrainingExerciseViewModel> trainingExercises)
+    public TrainingViewModel(string owner, string name, DateTime changeDate, IEnumerable<TrainingExerciseViewModel> trainingExercises)
     {
         Owner = owner;
-        EnName = enName;
-        PtName = ptName;
+        Name = name;
         ChangeDate = changeDate;
         TrainingExercises = trainingExercises;
     }
 
-    public static TrainingViewModel ToEntity(Training entity)
+    public static TrainingViewModel ToEntity(Training entity, ELanguage language)
     {
-        var trainingExercises = (from trainingExerciseDb in entity.TrainingExercises select TrainingExerciseViewModel.ToEntity(trainingExerciseDb)).ToList();
+        var trainingExercises = (from trainingExerciseDb in entity.TrainingExercises
+            select TrainingExerciseViewModel.ToEntity(trainingExerciseDb, language)).ToList();
 
-        return new(entity.Owner, entity.EnName, entity.PtName, entity.ChangeDate, trainingExercises);
+        return new(entity.Owner, language == ELanguage.English ? entity.EnName : entity.PtName, entity.ChangeDate,
+            trainingExercises);
     }
 }

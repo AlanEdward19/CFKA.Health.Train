@@ -1,5 +1,8 @@
-﻿using CFKA.Health.Infrastructure.Context;
+﻿using CFKA.Health.Domain.Entities;
+using CFKA.Health.Infrastructure.Context;
 using CFKA.Health.Infrastructure.Extensions;
+using CFKA.Health.Train.Application.Commands.CreateUpdateTraining;
+using CFKA.Health.Train.Application.InputModels;
 using CFKA.Health.Train.Application.Queries.BuildTrainingSheet;
 using CFKA.Health.Train.Application.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -10,87 +13,109 @@ namespace CFKA.Health.Train.Application.Handler;
 public class TrainingHandler
 {
     private readonly DbSet<Training> _trainings;
-    private readonly ILogger<TrainingHandler> _logger;
+    private readonly DbSet<Exercise> _exercises;
 
-    public TrainingHandler(CFKATrainDbContext dbContext, ILogger<TrainingHandler> logger)
+    private readonly ILogger<TrainingHandler> _logger;
+    private readonly IRepository<Training> _repository;
+
+    public TrainingHandler(CFKATrainDbContext dbContext, ILogger<TrainingHandler> logger, IRepository<Training> repository)
     {
         _trainings = dbContext.Trainings;
+        _exercises = dbContext.Exercises;
         _logger = logger;
+        _repository = repository;
     }
 
-    public async Task<IEnumerable<TrainingViewModel>> GetAll(string owner)
+    public async Task<IEnumerable<TrainingViewModel>> GetAll(string owner, ELanguage language)
     {
         var database =  await _trainings.Include(x => x.TrainingExercises).ThenInclude(x => x.Exercise)
             .ThenInclude(x => x.Muscle).Where(x => x.Owner.Equals(owner)).ToListAsync();
 
-        List<TrainingViewModel> training = (from trainingDb in database select TrainingViewModel.ToEntity(trainingDb)).ToList();
+        List<TrainingViewModel> training = (from trainingDb in database select TrainingViewModel.ToEntity(trainingDb, language)).ToList();
 
         return training;
     }
 
-    public async Task<TrainingViewModel> GetById(string owner, int id)
+    public async Task<TrainingViewModel> GetById(string owner, int id, ELanguage language)
     {
         var database =  await _trainings.Include(x => x.TrainingExercises).ThenInclude(x => x.Exercise)
             .ThenInclude(x => x.Muscle).Where(x => x.Id.Equals(id) && x.Owner.Equals(owner)).FirstOrDefaultAsync();
 
-        return TrainingViewModel.ToEntity(database!);
+        return TrainingViewModel.ToEntity(database!, language);
     }
 
-    //public async Task<TrainingSheetViewModel> BuildTrainingSheet(BuildTrainingSheetQuery query)
-    //{
-    //    _logger.LogInformation("Initializing trainingSheet build");
+    public async Task Insert(CreateUpdateTrainingCommand command, string owner)
+    {
+        _logger.LogInformation("Initialing insertion of new Training");
 
-    //    var queryWorkoutList = query.Workouts.SelectMany(x => x.TrainingExercises.Select(y => y.Exercise.ToLower()))
-    //        .ToList();
+        var exercisesId = command.TrainingExercises.Select(x => x.ExerciseId).ToList();
+        List<Exercise> exercises = await _exercises.VirtualInclude().Where(x => exercisesId.Contains(x.Id)).ToListAsync();
+        List<TrainingExercise> trainingExercises = new();
 
-    //    _logger.LogInformation("Retrieving exercises by name");
-    //    var exercises = await _exercises.VirtualInclude().Where(exercise =>
-    //        queryWorkoutList.Contains(query.Language == ELanguage.English
-    //            ? exercise.EnName.ToLower()
-    //            : exercise.PtName.ToLower())).ToListAsync();
-    //    _logger.LogInformation("Exercises retrieved");
+        Training training = new(owner, command.ChangeDate);
 
-    //    _logger.LogInformation("Building workout");
+        foreach (var trainingExercise in command.TrainingExercises)
+        {
+            var exercise = exercises.FirstOrDefault(x => x.Id.Equals(trainingExercise.ExerciseId));
 
-    //    var workouts = BuildWorkouts(query, exercises);
+            trainingExercises.Add(TrainingExerciseInputModel.ToEntity(exercise, trainingExercise));
+        }
 
-    //    _logger.LogInformation($"Workout built, with changeDate defined to: {query.ChangeDate}");
+        training.SetTrainingExercise(trainingExercises);
+        training.SetTrainingName();
+        await _repository.AddAsync(training);
+    }
 
-    //    var trainingSheet = new TrainingSheetViewModel
-    //    {
-    //        Workouts = workouts,
-    //        ChangeDate = query.ChangeDate
-    //    };
+    public async Task Update(CreateUpdateTrainingCommand command, int id, string owner) // Avaliar
+    {
+        _logger.LogInformation("Initialing insertion of new Training");
 
-    //    return trainingSheet;
-    //}
+        if (await Validate(id, owner))
+        {
+            var exercisesId = command.TrainingExercises.Select(x => x.ExerciseId).ToList();
+            List<Exercise> exercises = await _exercises.Where(x => exercisesId.Contains(x.Id)).ToListAsync();
+            List<TrainingExercise> trainingExercises = new();
 
-    //private List<WorkoutViewModel> BuildWorkouts(BuildTrainingSheetQuery query, List<Exercise> exercises)
-    //{
-    //    var workouts = new List<WorkoutViewModel>();
+            Training training = new(owner, command.ChangeDate);
 
-    //    foreach (var workout in query.Workouts)
-    //    {
-    //        var trainingExercises = new List<TrainingExerciseViewModel>();
+            foreach (var trainingExercise in command.TrainingExercises)
+            {
+                var exercise = exercises.FirstOrDefault(x => x.Id.Equals(trainingExercise.ExerciseId));
 
-    //        foreach (var trainingExercise in workout.TrainingExercises)
-    //        {
-    //            var exercise = GetExerciseByName(exercises, trainingExercise.Exercise.ToLower(), query.Language);
+                trainingExercises.Add(TrainingExerciseInputModel.ToEntity(exercise, trainingExercise));
+            }
 
-    //            trainingExercises.Add(new TrainingExerciseViewModel
-    //            {
-    //                Name = exercise.GetExerciseName(query.Language),
-    //                MainMuscle = GetMuscleNameByLanguage(query.Language, exercise.Muscle.MainMuscle),
-    //                Muscle = exercise.Muscle.GetMuscleName(query.Language),
-    //                Reps = trainingExercise.Reps,
-    //                Sets = trainingExercise.Sets,
-    //                Observations = trainingExercise.Observations
-    //            });
-    //        }
+            training.SetTrainingExercise(trainingExercises);
+            training.SetTrainingName();
+            await _repository.UpdateAsync(training, id);
+        }
 
-    //        workouts.Add(new WorkoutViewModel(trainingExercises, query.Language));
-    //    }
+        else
+            _logger.LogInformation($"Owner of training of id: {id} doesn't match {owner}");
+    }
 
-    //    return workouts;
-    //}
+    public async Task Delete(int id, string owner) // Avaliar
+    {
+        _logger.LogInformation("Initialing deletion of new Training");
+
+        if (await Validate(id, owner))
+        {
+            _logger.LogInformation($"Deleting Training with id: {id}");
+
+            await _repository.DeleteById(id);
+
+            _logger.LogInformation($"Training of id: {id} deleted!");
+        }
+        
+        else
+            _logger.LogInformation($"Owner of training of id: {id} doesn't match {owner}");
+        
+    }
+
+    private async Task<bool> Validate(int id, string owner)
+    {
+        var entity = await _repository.GetById(id);
+
+        return entity.Owner.Equals(owner);
+    }
 }

@@ -30,7 +30,7 @@ public class Training
         var ptMuscles = string.Join(", ", TrainingExercises.Select(trainingExercise => trainingExercise.Exercise.Muscle.GetMainMuscleName(ELanguage.Portuguese)).Distinct());
         var ptLastComma = ptMuscles.LastIndexOf(",");
 
-        EnName = enLastComma != -1 ? $"{enMuscles.Substring(0, enLastComma)} and {enMuscles.Substring(enLastComma + 1)}" : enMuscles;
-        PtName = ptLastComma != -1 ? $"{ptMuscles.Substring(0, ptLastComma)} and {ptMuscles.Substring(ptLastComma + 1)}" : ptMuscles;
+        EnName = enLastComma != -1 ? $"{enMuscles.Substring(0, enLastComma)} and {enMuscles.Substring(enLastComma + 1).Trim()}" : enMuscles;
+        PtName = ptLastComma != -1 ? $"{ptMuscles.Substring(0, ptLastComma)} e {ptMuscles.Substring(ptLastComma + 1).Trim()}" : ptMuscles;
     }
 }

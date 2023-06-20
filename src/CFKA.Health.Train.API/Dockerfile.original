@@ -3,7 +3,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 
-
 # HTTP/1 - Restful API
 EXPOSE 5000 
 

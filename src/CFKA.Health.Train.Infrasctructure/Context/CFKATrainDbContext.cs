@@ -1832,6 +1832,8 @@ public class CFKATrainDbContext : DbContext
 
     public DbSet<Exercise> Exercises { get; set; }
     public DbSet<Muscle> Muscles { get; set; }
+    public DbSet<TrainingExercise> TrainingExercises { get; set; }
+    public DbSet<Training> Trainings { get; set; }  
 
     #endregion
 }

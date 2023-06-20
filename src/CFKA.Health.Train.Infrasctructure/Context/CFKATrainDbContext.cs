@@ -1826,12 +1826,19 @@ public class CFKATrainDbContext : DbContext
 
             #endregion
         });
+
+        modelBuilder.Entity<Training>()
+            .HasMany(t => t.TrainingExercises)
+            .WithOne(te => te.Training)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 
     #region Db Sets
 
     public DbSet<Exercise> Exercises { get; set; }
     public DbSet<Muscle> Muscles { get; set; }
+    public DbSet<TrainingExercise> TrainingExercises { get; set; }
+    public DbSet<Training> Trainings { get; set; }  
 
     #endregion
 }

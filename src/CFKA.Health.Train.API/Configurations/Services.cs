@@ -1,6 +1,7 @@
 ﻿using CFKA.Health.Domain.Interfaces;
 using CFKA.Health.Infrastructure.Context;
 using CFKA.Health.Infrastructure.Repository;
+using CFKA.Health.Train.Application.Commands.CreateUpdateTraining;
 using CFKA.Health.Train.Application.Handler;
 using Microsoft.EntityFrameworkCore;
 

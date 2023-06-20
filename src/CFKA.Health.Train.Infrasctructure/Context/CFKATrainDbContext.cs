@@ -1826,6 +1826,11 @@ public class CFKATrainDbContext : DbContext
 
             #endregion
         });
+
+        modelBuilder.Entity<Training>()
+            .HasMany(t => t.TrainingExercises)
+            .WithOne(te => te.Training)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 
     #region Db Sets

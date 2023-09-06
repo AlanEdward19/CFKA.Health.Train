@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CFKA.Health.Domain.Entities;
 
@@ -8,15 +9,23 @@ public class Training
     public int Id { get; private set; }
     public string EnName { get; private set; }
     public string PtName { get; private set; }
-    public string Owner { get; private set; }
+    public Guid OwnerId { get; private set; }
     public DateTime ChangeDate { get; private set; }
+
+    [ForeignKey(nameof(OwnerId))]
+    public virtual User Owner { get; private set; }
 
     public IEnumerable<TrainingExercise> TrainingExercises { get; private set; }
 
-    public Training(string owner, DateTime changeDate)
+    public Training(DateTime changeDate, User owner)
     {
-        Owner = owner;
         ChangeDate = changeDate;
+        Owner = owner;
+    }
+
+    public Training()
+    {
+        
     }
 
     public void SetTrainingExercise(IEnumerable<TrainingExercise> trainingExercises) =>

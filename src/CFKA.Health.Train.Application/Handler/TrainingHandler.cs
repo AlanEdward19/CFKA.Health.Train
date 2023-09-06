@@ -3,7 +3,6 @@ using CFKA.Health.Infrastructure.Context;
 using CFKA.Health.Infrastructure.Extensions;
 using CFKA.Health.Train.Application.Commands.CreateUpdateTraining;
 using CFKA.Health.Train.Application.InputModels;
-using CFKA.Health.Train.Application.Queries.BuildTrainingSheet;
 using CFKA.Health.Train.Application.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -12,6 +11,7 @@ namespace CFKA.Health.Train.Application.Handler;
 
 public class TrainingHandler
 {
+    private readonly DbSet<User> _users;
     private readonly DbSet<Training> _trainings;
     private readonly DbSet<Exercise> _exercises;
 
@@ -20,14 +20,17 @@ public class TrainingHandler
 
     public TrainingHandler(CFKATrainDbContext dbContext, ILogger<TrainingHandler> logger, IRepository<Training> repository)
     {
+        _users = dbContext.Users;
         _trainings = dbContext.Trainings;
         _exercises = dbContext.Exercises;
         _logger = logger;
         _repository = repository;
     }
 
-    public async Task<IEnumerable<TrainingViewModel>> GetAll(string owner, ELanguage language)
+    public async Task<IEnumerable<TrainingViewModel>> GetAll(string ownerId, ELanguage language)
     {
+        User owner = await _users.FirstAsync(x => x.Id.Equals(Guid.Parse(ownerId)));
+
         var database =  await _trainings.Include(x => x.TrainingExercises).ThenInclude(x => x.Exercise)
             .ThenInclude(x => x.Muscle).Where(x => x.Owner.Equals(owner)).ToListAsync();
 
@@ -36,23 +39,27 @@ public class TrainingHandler
         return training;
     }
 
-    public async Task<TrainingViewModel> GetById(string owner, int id, ELanguage language)
+    public async Task<TrainingViewModel> GetById(string ownerId, int id, ELanguage language)
     {
+        User owner = await _users.FirstAsync(x => x.Id.Equals(Guid.Parse(ownerId)));
+
         var database =  await _trainings.Include(x => x.TrainingExercises).ThenInclude(x => x.Exercise)
             .ThenInclude(x => x.Muscle).Where(x => x.Id.Equals(id) && x.Owner.Equals(owner)).FirstOrDefaultAsync();
 
         return TrainingViewModel.ToEntity(database!, language);
     }
 
-    public async Task Insert(CreateUpdateTrainingCommand command, string owner)
+    public async Task Insert(CreateUpdateTrainingCommand command, string ownerId)
     {
         _logger.LogInformation("Initialing insertion of new Training");
+
+        User owner = await _users.FirstAsync(x => x.Id.Equals(Guid.Parse(ownerId)));
 
         var exercisesId = command.TrainingExercises.Select(x => x.ExerciseId).ToList();
         List<Exercise> exercises = await _exercises.VirtualInclude().Where(x => exercisesId.Contains(x.Id)).ToListAsync();
         List<TrainingExercise> trainingExercises = new();
 
-        Training training = new(owner, command.ChangeDate);
+        Training training = new(command.ChangeDate, owner);
 
         foreach (var trainingExercise in command.TrainingExercises)
         {
@@ -66,9 +73,11 @@ public class TrainingHandler
         await _repository.AddAsync(training);
     }
 
-    public async Task Update(CreateUpdateTrainingCommand command, int id, string owner) // Avaliar
+    public async Task Update(CreateUpdateTrainingCommand command, int id, string ownerId)
     {
         _logger.LogInformation("Initialing insertion of new Training");
+
+        User owner = await _users.FirstAsync(x => x.Id.Equals(Guid.Parse(ownerId)));
 
         if (await Validate(id, owner))
         {
@@ -76,7 +85,7 @@ public class TrainingHandler
             List<Exercise> exercises = await _exercises.Where(x => exercisesId.Contains(x.Id)).ToListAsync();
             List<TrainingExercise> trainingExercises = new();
 
-            Training training = new(owner, command.ChangeDate);
+            Training training = new(command.ChangeDate, owner);
 
             foreach (var trainingExercise in command.TrainingExercises)
             {
@@ -91,28 +100,30 @@ public class TrainingHandler
         }
 
         else
-            _logger.LogInformation($"Owner of training of id: {id} doesn't match {owner}");
+            _logger.LogInformation($"Owner of training of id: '{id}' doesn't match '{owner.Id}'");
     }
 
-    public async Task Delete(int id, string owner) // Avaliar
+    public async Task Delete(int id, string ownerId) // Avaliar
     {
         _logger.LogInformation("Initialing deletion of new Training");
 
+        User owner = await _users.FirstAsync(x => x.Id.Equals(Guid.Parse(ownerId)));
+
         if (await Validate(id, owner))
         {
-            _logger.LogInformation($"Deleting Training with id: {id}");
+            _logger.LogInformation($"Deleting Training with id: '{id}'");
 
             await _repository.DeleteById(id);
 
-            _logger.LogInformation($"Training of id: {id} deleted!");
+            _logger.LogInformation($"Training of id: '{id}' deleted!");
         }
         
         else
-            _logger.LogInformation($"Owner of training of id: {id} doesn't match {owner}");
+            _logger.LogInformation($"Owner of training of id: '{id}' doesn't match '{owner.Id}'");
         
     }
 
-    private async Task<bool> Validate(int id, string owner)
+    private async Task<bool> Validate(int id, User owner)
     {
         var entity = await _repository.GetById(id);
 

@@ -25,4 +25,9 @@ public class GetExerciseHandler : IQueryHandler<Exercise>
         _logger.LogInformation($"Retrieving Exercise with id: {id}");
         return await _repository.GetById(id);
     }
+
+    public async Task<Exercise> GetById(Guid id)
+    {
+        throw new NotImplementedException();
+    }
 }

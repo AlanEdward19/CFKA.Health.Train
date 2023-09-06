@@ -74,6 +74,11 @@ public class CreateUpdateExerciseCommandHandler : ICommandHandler
         _logger.LogInformation("Exercise updated!");
     }
 
+    public async Task Update(ICommand command, Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task Delete(int id)
     {
         _logger.LogInformation("Initialing deletion of new Muscle");
@@ -83,5 +88,10 @@ public class CreateUpdateExerciseCommandHandler : ICommandHandler
         await _repository.DeleteById(id);
 
         _logger.LogInformation($"Muscle of id: {id} deleted!");
+    }
+
+    public async Task Delete(Guid id)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -16,5 +16,10 @@ public class QueryHandler<T>
         return await _handler.GetById(id);
     }
 
+    public async Task<T> Handle(Guid id)
+    {
+        return await _handler.GetById(id);
+    }
+
     public async Task<List<T>> Handle() => await _handler.GetAll();
 }

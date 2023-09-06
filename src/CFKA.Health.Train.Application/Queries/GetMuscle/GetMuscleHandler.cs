@@ -26,4 +26,9 @@ public class GetMuscleHandler : IQueryHandler<Muscle>
 
         return await _repository.GetById(id);
     }
+
+    public async Task<Muscle> GetById(Guid id)
+    {
+        throw new NotImplementedException();
+    }
 }

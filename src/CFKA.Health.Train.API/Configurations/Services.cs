@@ -18,6 +18,7 @@ public static class Services
 
         services.AddScoped<CreateUpdateMuscleCommandHandler>();
         services.AddScoped<CreateUpdateExerciseCommandHandler>();
+        services.AddScoped<CreateUpdateUserCommandHandler>();
 
         #endregion
 
@@ -25,6 +26,7 @@ public static class Services
 
         services.AddScoped<GetMuscleHandler>();
         services.AddScoped<GetExerciseHandler>();
+        services.AddScoped<GetUserHandler>();
 
         #endregion
 

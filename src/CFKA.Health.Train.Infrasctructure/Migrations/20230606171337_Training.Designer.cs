@@ -3,6 +3,7 @@ using System;
 using CFKA.Health.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CFKA.Health.Infrastructure.Migrations
 {
     [DbContext(typeof(CFKATrainDbContext))]
-    partial class CFKATrainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230606171337_Training")]
+    partial class Training
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +35,6 @@ namespace CFKA.Health.Infrastructure.Migrations
 
                     b.Property<string>("EnName")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ExerciseVideoUrl")
                         .HasColumnType("text");
 
                     b.Property<int>("MuscleId")
@@ -1613,16 +1613,15 @@ namespace CFKA.Health.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("OwnerId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("Owner")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("PtName")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OwnerId");
 
                     b.ToTable("Trainings");
                 });
@@ -1648,7 +1647,7 @@ namespace CFKA.Health.Infrastructure.Migrations
                     b.Property<int>("Sets")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TrainingId")
+                    b.Property<int?>("TrainingId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -1658,33 +1657,6 @@ namespace CFKA.Health.Infrastructure.Migrations
                     b.HasIndex("TrainingId");
 
                     b.ToTable("TrainingExercises");
-                });
-
-            modelBuilder.Entity("CFKA.Health.Domain.Entities.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CFKA.Health.Domain.Entities.Exercise", b =>
@@ -1698,17 +1670,6 @@ namespace CFKA.Health.Infrastructure.Migrations
                     b.Navigation("Muscle");
                 });
 
-            modelBuilder.Entity("CFKA.Health.Domain.Entities.Training", b =>
-                {
-                    b.HasOne("CFKA.Health.Domain.Entities.User", "Owner")
-                        .WithMany("Trainings")
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Owner");
-                });
-
             modelBuilder.Entity("CFKA.Health.Domain.Entities.TrainingExercise", b =>
                 {
                     b.HasOne("CFKA.Health.Domain.Entities.Exercise", "Exercise")
@@ -1717,25 +1678,16 @@ namespace CFKA.Health.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CFKA.Health.Domain.Entities.Training", "Training")
+                    b.HasOne("CFKA.Health.Domain.Entities.Training", null)
                         .WithMany("TrainingExercises")
-                        .HasForeignKey("TrainingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TrainingId");
 
                     b.Navigation("Exercise");
-
-                    b.Navigation("Training");
                 });
 
             modelBuilder.Entity("CFKA.Health.Domain.Entities.Training", b =>
                 {
                     b.Navigation("TrainingExercises");
-                });
-
-            modelBuilder.Entity("CFKA.Health.Domain.Entities.User", b =>
-                {
-                    b.Navigation("Trainings");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,6 +3,7 @@ using System;
 using CFKA.Health.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CFKA.Health.Infrastructure.Migrations
 {
     [DbContext(typeof(CFKATrainDbContext))]
-    partial class CFKATrainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230906114200_UserRelatedTrain")]
+    partial class UserRelatedTrain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +35,6 @@ namespace CFKA.Health.Infrastructure.Migrations
 
                     b.Property<string>("EnName")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ExerciseVideoUrl")
                         .HasColumnType("text");
 
                     b.Property<int>("MuscleId")

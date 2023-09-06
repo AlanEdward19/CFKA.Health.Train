@@ -23,9 +23,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.ConfigureEndpoints(builder.Configuration.GetSection("EndPointsConfig"));
 app.ConfigureMiddlewares();
+
 
 app.Run();

@@ -1,6 +1,7 @@
 ﻿using CFKA.Health.Domain.Interfaces;
 using CFKA.Health.Infrastructure.Context;
 using CFKA.Health.Infrastructure.Repository;
+using CFKA.Health.Train.Application.Commands.CreateUpdateTraining;
 using CFKA.Health.Train.Application.Handler;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ public static class Services
 
         services.AddScoped<CreateUpdateMuscleCommandHandler>();
         services.AddScoped<CreateUpdateExerciseCommandHandler>();
+        services.AddScoped<CreateUpdateUserCommandHandler>();
 
         #endregion
 
@@ -24,12 +26,27 @@ public static class Services
 
         services.AddScoped<GetMuscleHandler>();
         services.AddScoped<GetExerciseHandler>();
+        services.AddScoped<GetUserHandler>();
 
         #endregion
 
         #region Repository
 
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+        #endregion
+
+        #region CORS
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+        });
 
         #endregion
 

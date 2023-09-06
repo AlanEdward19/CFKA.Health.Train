@@ -4,5 +4,6 @@ public class CreateUpdateMuscleCommand : ICommand
 {
     [EnumValidator(EnumType = typeof(EMuscle))]
     public string MainMuscle { get; set; }
-    public string Name { get; set; }
+    public string EnName { get; set; }
+    public string PtName { get; set; }
 }

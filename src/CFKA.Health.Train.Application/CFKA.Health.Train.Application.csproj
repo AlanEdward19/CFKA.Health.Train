@@ -11,6 +11,7 @@
     <Folder Include="Commands\CreateUpdateExercise\" />
     <Folder Include="Annotations\" />
     <Folder Include="Handler\" />
+    <Folder Include="InputModels\" />
     <Folder Include="Queries\GetMuscle\" />
     <Folder Include="Queries\GetExercise\" />
     <Folder Include="Queries\BuildTrainingSheet\" />

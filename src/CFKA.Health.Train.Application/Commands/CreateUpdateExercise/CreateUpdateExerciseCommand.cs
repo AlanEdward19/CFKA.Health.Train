@@ -2,6 +2,7 @@
 
 public class CreateUpdateExerciseCommand : ICommand
 {
-    public string Name { get; set; }
+    public string EnName { get; set; }
+    public string PtName { get; set; }
     public string Muscle { get; set; }
 }

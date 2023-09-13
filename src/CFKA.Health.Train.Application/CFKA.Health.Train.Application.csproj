@@ -17,11 +17,12 @@
     <Folder Include="Queries\BuildTrainingSheet\" />
     <Folder Include="Queries\BuildWorkouts\" />
     <Folder Include="Utils\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Validators\" />
+    <Folder Include="Validators\Training\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.7.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

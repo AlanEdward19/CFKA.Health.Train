@@ -30,7 +30,9 @@ public class CreateUpdateUserCommandHandler : ICommandHandler
             Email = model.Email,
             FirstName = model.FirstName,
             LastName = model.LastName,
-            Password = model.Password
+            Password = model.Password,
+            TrainerId = model.TrainerId,
+            UserType = model.TrainerId == null ? EUserType.Trainer : EUserType.Client
         };
 
         await _repository.AddAsync(user);
@@ -52,6 +54,8 @@ public class CreateUpdateUserCommandHandler : ICommandHandler
         user.FirstName = string.IsNullOrWhiteSpace(model.FirstName) ? user.FirstName : model.FirstName;
         user.LastName = string.IsNullOrWhiteSpace(model.LastName) ? user.LastName : model.LastName;
         user.Password = string.IsNullOrWhiteSpace(model.Password) ? user.Password : model.Password;
+        user.TrainerId = string.IsNullOrWhiteSpace(model.TrainerId.ToString()) ? user.TrainerId : model.TrainerId;
+        user.UserType = user.TrainerId == null ? EUserType.Trainer : EUserType.Client;
 
         await _repository.UpdateAsync(user, id);
 

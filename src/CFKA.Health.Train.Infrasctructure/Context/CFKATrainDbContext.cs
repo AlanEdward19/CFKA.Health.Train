@@ -13,6 +13,18 @@ public class CFKATrainDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<Training>()
+            .HasOne(t => t.Owner)
+            .WithMany(u => u.Trainings)
+            .HasForeignKey(t => t.OwnerId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Training>()
+            .HasOne(t => t.Client)
+            .WithMany()
+            .HasForeignKey(t => t.ClientId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         #region Chest
 
         Muscle upperChest = new()

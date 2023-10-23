@@ -16,8 +16,8 @@ namespace CFKA.Health.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Login([FromQuery] GetLoginQuery query)
+        [HttpPut]
+        public async Task<IActionResult> Login([FromBody] GetLoginQuery query)
         {
             User user = await _context.Users.FirstOrDefaultAsync(x =>
                 x.Email.ToLower().Equals(query.Email.ToLower()) &&

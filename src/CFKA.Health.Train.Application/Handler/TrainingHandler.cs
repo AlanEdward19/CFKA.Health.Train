@@ -1,7 +1,6 @@
 ﻿using CFKA.Health.Domain.Entities;
 using CFKA.Health.Infrastructure.Context;
 using CFKA.Health.Infrastructure.Extensions;
-using CFKA.Health.Infrastructure.Migrations;
 using CFKA.Health.Train.Application.Commands.CreateUpdateTraining;
 using CFKA.Health.Train.Application.InputModels;
 using CFKA.Health.Train.Application.ViewModels;

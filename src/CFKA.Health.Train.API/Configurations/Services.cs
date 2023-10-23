@@ -12,7 +12,7 @@ public static class Services
     public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<CFKATrainDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("Database")));
+            options.UseSqlServer(configuration.GetConnectionString("Database")));
 
         #region Commands
 

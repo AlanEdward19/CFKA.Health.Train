@@ -2,12 +2,16 @@
 
 public record TrainingViewModel
 {
+    public int Id { get; set; }
+    public Guid OwnerId { get; set; }
     public string Name { get; private set; }
     public DateTime ChangeDate { get; private set; }
     public IEnumerable<TrainingExerciseViewModel> TrainingExercises { get; private set; }
 
-    public TrainingViewModel(string name, DateTime changeDate, IEnumerable<TrainingExerciseViewModel> trainingExercises)
+    public TrainingViewModel(int id, Guid ownerId, string name, DateTime changeDate, IEnumerable<TrainingExerciseViewModel> trainingExercises)
     {
+        Id = id;
+        OwnerId = ownerId;
         Name = name;
         ChangeDate = changeDate;
         TrainingExercises = trainingExercises;
@@ -18,7 +22,7 @@ public record TrainingViewModel
         var trainingExercises = (from trainingExerciseDb in entity.TrainingExercises
             select TrainingExerciseViewModel.ToEntity(trainingExerciseDb, language)).ToList();
 
-        return new(language == ELanguage.English ? entity.EnName : entity.PtName, entity.ChangeDate,
+        return new(entity.Id, entity.OwnerId, language == ELanguage.English ? entity.EnName : entity.PtName, entity.ChangeDate,
             trainingExercises);
     }
 }

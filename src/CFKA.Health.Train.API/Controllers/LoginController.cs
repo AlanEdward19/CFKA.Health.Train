@@ -23,7 +23,7 @@ namespace CFKA.Health.Controllers
                 x.Email.ToLower().Equals(query.Email.ToLower()) &&
                 x.Password.ToLower().Equals(query.Password.ToLower()));
 
-            return user == null ? BadRequest(new{Error = "Invalid email and password combination" }) : Ok(new{Id = user.Id });
+            return user == null ? BadRequest(new{Error = "Invalid email and password combination" }) : Ok(new{Id = user.Id, Name = user.FirstName });
         }
 
     }

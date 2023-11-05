@@ -149,7 +149,7 @@ public class TrainingHandler
         if (await Validate(id, owner))
         {
             var exercisesId = command.TrainingExercises.Select(x => x.ExerciseId).ToList();
-            List<Exercise> exercises = await _exercises.Where(x => exercisesId.Contains(x.Id)).ToListAsync();
+            List<Exercise> exercises = await _exercises.VirtualInclude().Where(x => exercisesId.Contains(x.Id)).ToListAsync();
             List<TrainingExercise> trainingExercises = new();
 
             Training training = new(command.ChangeDate, owner, trainer);

@@ -31,12 +31,14 @@ public class Repository<T> : IRepository<T> where T : class
     {
         var entityDb = await GetById(id);
 
-        foreach (var property in _dbSet.Entry(entityDb).Properties)
-        {
-            var propertyName = property.Metadata.Name;
+        var properties = entityDb.GetType().GetProperties();
 
-            if (propertyName.ToLower() != "id")
-                property.CurrentValue = _dbSet.Entry(entity).Property(propertyName).CurrentValue;
+        foreach (var property in properties)
+        {
+            var propertyName = property.Name;
+
+            if (!propertyName.Contains("id", StringComparison.InvariantCultureIgnoreCase))
+                property.SetValue(entityDb, property.GetValue(entity, null));
         }
 
         _dbSet.Update(entityDb);
